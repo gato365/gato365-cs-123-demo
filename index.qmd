@@ -1,5 +1,6 @@
 ---
 title: "CS 123 Teaching Demo"
+runtime: shiny_prerendered
 ---
 
 ```{r setup }
