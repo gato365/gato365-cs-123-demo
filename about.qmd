@@ -1,9 +1,60 @@
 ---
-title: "About"
+title: "About Dr. Immanuel J. Williams"
+format: html
 ---
 
-About this site
+# Dr. Immanuel J. Williams
 
-```{r}
-1 + 1
-```
+## ![](images/GATO365-24.jpg){width="157"}
+
+## Lecturer
+
+### California Polytechnic State University
+
+#### Statistics Department
+
+1 Grand Avenue, San Luis Obispo, CA. 93407-0405\
+Email: [imwillia\@calpoly.edu](mailto:imwillia@calpoly.edu)\
+Phone: (732) 207-7321
+
+## Education
+
+-   **Ph.D. in Education**\
+    Focus: Psychometrics & Statistics\
+    Rutgers University, May 2017
+
+-   **M.S. in Statistics**\
+    Focus: Psychometrics\
+    Rutgers University, January 2013
+
+-   **B.S. in Mathematics**\
+    Focus: Statistics\
+    The University of Maryland, Baltimore County, May 2011
+
+## Teaching Experience
+
+-   **Lecturer**\
+    California Polytechnic State University, 2018-Present\
+    Courses: Statistical Inference for Management
+
+I & II
+
+-   **Lecturer**\
+    University California Santa Cruz, 2017-2018\
+    Courses: Statistical Methods For The Biological, Environmental, And Health Sciences, Gambling, And Gaming, & The Art of Data Visualization
+
+-   **Lecturer**\
+    California State University Monterey Bay, 2015-2017\
+    Courses: Pre-calculus, Calculus II, & Applied Statistics
+
+## Publications
+
+-   Weiland, T., & Williams, I. J. (2023). Culturally Relevant Data in Teaching Statistics and Data Science Courses. *Journal of Statistics and Data Science Education*, 1-16.
+
+-   Sisso, D., Bass, N., & Williams, I. J. (2023). Teaching One‐Way ANOVA with engaging NBA data and R Shiny within a flexdashboard. *Teaching Statistics*.
+
+-   DeLiema D., Flood V. J., D
+
+ahn M., Williams I. J., Abrahamson D., Enyedy N., & Steen F. (2022). Debugging Failure: A Multi-dimensional Framework for Documenting Newcomers’ Experiences with Obstacles. *Cognition and Instruction*.
+
+-   Langer-Osuna J. M., Munson J., Gargroetzi E. C., Williams I. J., Chavez R. (2020). So What Are We

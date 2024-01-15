@@ -1,0 +1,35 @@
+---
+title: "Learning Objectives"
+---
+
+
+## Learning Objectives:
+
+### *Who had more energy The Rolling Stones, The Beatles and The Monkees?*
+
+1.  **ggplot: Layered Approach**
+
+-   **Description**: ggplot builds plots using a layered approach. Each layer adds a new element to the plot, making complex visualizations achievable through simple building blocks.
+
+2.  **Geom: Visual Representation**
+
+-   **Description**: Geoms (geometric objects) are the heart of a ggplot plot. They provide the visual representations of data.
+-   **Examples**:
+-   *Points* for scatter plots
+-   *Boxplots* and *Violin Plots* for showing distributions and comparing groups
+-   *Bars* for bar charts
+
+3.  **Stat: Statistical Transformations**
+
+-   **Description**: Statistical transformations (Stats) process your data to create summaries or perform calculations.
+-   **Key Concepts**:
+-   *Counting* data points
+-   *Summarizing* datasets
+
+4.  **Guide: Annotations and Legends**
+
+-   **Description**: Guides include all the necessary annotations to make a plot readable and informative.
+-   **Elements**:
+-   *Legends* to explain scales
+-   *Axis labels* for clarity
+-   *Title and subtitles* for context

@@ -3,13 +3,13 @@ title: "Data Extraction and Manipulation"
 author: "Immanuel Williams PhD"
 ---
 
-To facilitate the tasks you've outlined, we'll use the `spotifyr` package in R. This package is a great tool for accessing Spotify's Web API and can help us gather and manipulate data related to artists, albums, and tracks. Below, I'll provide you with R code snippets for each of your tasks. 
+To facilitate the tasks you've outlined, we'll use the `spotifyr` package in R. This package is a great tool for accessing Spotify's Web API and can help us gather and manipulate data related to artists, albums, and tracks. Below, I'll provide you with R code snippets for each of your tasks.
 
 Before you begin, ensure that you have the `spotifyr` package installed and loaded, and that you have valid Spotify API credentials (Client ID and Client Secret). Replace `"xxxxxxxxxxxxxxxxxxxxx"` with your actual credentials.
 
-**Task 1: Get Tracks from The Beatles, The Rolling Stones, and The Monkees**
+## **Task 1: Get Tracks from The Beatles, The Rolling Stones, and The Monkees**
 
-1. **Load the `spotifyr` Library and Authenticate:**
+### 1. **Load the `spotifyr` Library and Authenticate:**  {#extract}
 
 ```{r}
 #| message: false
@@ -19,7 +19,7 @@ library(tidyverse)
 ```
 
 ```{r}
-
+#| eval: false
 
 # Load environment variables
 client_id <- Sys.getenv("SPOTIFY_CLIENT_ID")
@@ -31,9 +31,11 @@ access_token <- get_spotify_access_token()
 
 ```
 
-2. **Get Data for Each Artist and Bind Rows:**
+### 2. **Get Data for Each Artist and Bind Rows:**  {#bind}
 
 ```{r}
+#| eval: false
+
 beatles_tracks <- get_artist_audio_features("The Beatles")
 rolling_stones_tracks <- get_artist_audio_features("The Rolling Stones")
 monkees_tracks <- get_artist_audio_features("The Monkees")
@@ -41,22 +43,26 @@ monkees_tracks <- get_artist_audio_features("The Monkees")
 all_tracks <- bind_rows(beatles_tracks, rolling_stones_tracks, monkees_tracks)
 ```
 
-3. **Filter Out Duplicates and Irrelevant Data:**
+### 3. **Filter Out Duplicates and Irrelevant Data:** {#filter}
 
 Here, you'll need to decide what constitutes an irrelevant track. For simplicity, I'm removing duplicates based on track IDs.
 
 ```{r}
+#| eval: false
+
 all_tracks_cleaned <- all_tracks %>% 
 distinct(track_id, .keep_all = TRUE)
 ```
 
-**Task 2: Aggregate Information Based on Album and Artist**
+## **Task 2: Aggregate Information Based on Album and Artist**
 
-1. **Group by Album and Artist:**
+### 1. **Group by Album and Artist:** {#groupby}
 
-Aggregate data to get Energy, Valence, Number of Songs per Album, and Album Year. 
+Aggregate data to get Energy, Valence, Number of Songs per Album, and Album Year.
 
 ```{r}
+#| eval: false
+
 album_info <- all_tracks_cleaned %>% 
 group_by(artist_name, album_name, album_release_year) %>%
 summarise(Energy = mean(energy),
@@ -65,11 +71,13 @@ Number_of_Songs = n(),
 .groups = 'drop')
 ```
 
-2. **Create an Overall DataFrame for Each Artist:**
+### 2. **Create an Overall DataFrame for Each Artist:**
 
 This DataFrame will show the number of songs, number of albums, and other noteworthy variables for each artist.
 
 ```{r}
+#| eval: false
+
 artist_overview <- all_tracks_cleaned %>% 
 group_by(artist_name) %>%
 summarise(Number_of_Songs = n(),

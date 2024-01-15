@@ -7,7 +7,11 @@ website:
     left:
       - href: index.qmd
         text: Home
+      - learning_objectives.qmd
+      - extract_transform.qmd
       - about.qmd
+  
+      
 
 format:
   html:

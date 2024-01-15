@@ -1,14 +1,10 @@
 ---
 title: "CS 123 Teaching Demo"
-runtime: shiny_prerendered
 ---
 
 ```{r setup }
 #| include: false
 
-
-library(learnr)
-library(gradethis)
 ```
 
 ```{r}
@@ -16,42 +12,13 @@ library(gradethis)
 load("music_data.rda")
 ```
 
-## Learning Objectives:
 
-### *Who had more energy The Rolling Stones, The Beatles and The Monkees?*
-
-1.  **ggplot: Layered Approach**
-
--   **Description**: ggplot builds plots using a layered approach. Each layer adds a new element to the plot, making complex visualizations achievable through simple building blocks.
-
-2.  **Geom: Visual Representation**
-
--   **Description**: Geoms (geometric objects) are the heart of a ggplot plot. They provide the visual representations of data.
--   **Examples**:
--   *Points* for scatter plots
--   *Boxplots* and *Violin Plots* for showing distributions and comparing groups
--   *Bars* for bar charts
-
-3.  **Stat: Statistical Transformations**
-
--   **Description**: Statistical transformations (Stats) process your data to create summaries or perform calculations.
--   **Key Concepts**:
--   *Counting* data points
--   *Summarizing* datasets
-
-4.  **Guide: Annotations and Legends**
-
--   **Description**: Guides include all the necessary annotations to make a plot readable and informative.
--   **Elements**:
--   *Legends* to explain scales
--   *Axis labels* for clarity
--   *Title and subtitles* for context
 
 ## Review of the Extract-Transform (E-T) Process
 
 ### *How did we get this data?*
 
--   **Overview**: We extracted data using the Spotify API and transformed it using various dplyr functions. [Link to Extraction and Transformation Process](). Additionally, [here's a reference to research presented at a conference](https://www.causeweb.org/usproc/eusr/2022/virtual-posters/9) of Extraction Transformation Visualization (ETV) a teaching data science technique.
+-   **Overview**: We extracted data using the Spotify API and transformed it using various dplyr functions. [Link to Extraction and Transformation Process](extract_transform.html). Additionally, [here's a reference to research presented at a conference](https://www.causeweb.org/usproc/eusr/2022/virtual-posters/9) of Extraction Transformation Visualization (ETV) a teaching data science technique.
 
 -   **Illustration with Data**:
 
@@ -61,9 +28,11 @@ load("music_data.rda")
 
 -   `Group By and Summarize`: Demonstrating these processes with `album_info_df` and `artist_overview_df`. [Further details can be found in this section of the notes]().
 
-## 0. Lets Visualize
+## 0. Lets Visualize using ggplot
 
 ```{r}
+#| message: false
+
 library(ggplot2)
 ```
 
@@ -72,6 +41,34 @@ library(ggplot2)
 -   Built upon the principles of the Grammar of Graphics, it allows users to construct plots by layering components systematically.
 
 -   ggplot2 is renowned for its ability to handle complex visualization tasks with ease, offering a wide range of plot types and customization options.
+
+
+------------------------------------------------------------------------
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
 
 ## 1. **Understanding Geoms**
 
@@ -101,7 +98,30 @@ ggplot(artist_overview_df, aes(x = artist_name, y = Number_of_Albums)) +
 This visualization will help us see which artist group released the most albums.
 
 ------------------------------------------------------------------------
-
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 ### Investigating the Distribution - geom_violin
 
 #### *What were the energy levels of each group?*
@@ -123,6 +143,30 @@ ggplot(all_tracks_cleaned_df, aes(x = artist_name, y = energy, fill = artist_nam
 A violin plot is chosen here because it not only shows the distribution but also the density of the data points, giving a clearer picture than a boxplot.
 
 ------------------------------------------------------------------------
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ### Investigating a Relationship - geom_point
 
@@ -157,8 +201,33 @@ ggplot(album_info_df, aes(x = Energy, y = Valence, color = artist_name)) +
 ```
 
 This approach allows us to first observe the general trend and then delve deeper into how this relationship might differ across different artist groups. """
+------------------------------------------------------------------------
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
-## 2. Exploring Stats
+## 2. Exploring Stats within ggplot
 
 -   **Definition**: In ggplot2, Stats (statistical transformations) are fundamental components that transform and summarize data.
 
@@ -186,6 +255,32 @@ ggplot(all_tracks_cleaned_df, aes(x = artist_name, y = energy, fill = artist_nam
 -   The `mean` function calculates the average energy level for each artist, and the resulting point is plotted on top of the corresponding violin plot.
 
 -   This enhancement provides a clear visual indicator of the central tendency of the energy distribution for each artist, adding depth to our data analysis.
+
+------------------------------------------------------------------------
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ### In Class Practice
 
@@ -231,7 +326,31 @@ In this code snippet:
 -   This enhanced section provides an in-depth understanding of the role of guides in ggplot2 and illustrates their application with a practical example.
 
 -   By customizing legends and annotations, we can significantly improve the effectiveness of our data visualizations, making them more informative and accessible to the audience.
-
+------------------------------------------------------------------------
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 ### In Class Practice
 
 ## Conclusion
@@ -243,7 +362,31 @@ Today's exploration of the ggplot2 package in R has taken us through the intrica
 -   **Guides** enhanced our plots with clear legends and annotations, making them informative and accessible.
 
 This session aimed to not only broaden your understanding of ggplot2 but also to inspire its application in your data storytelling endeavors. Thank you for your engagement, and I encourage you to continue exploring the vast potential of data visualization.
-
+------------------------------------------------------------------------
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 ### Question 1: Geoms
 
 **Prompt:** Using the `mtcars` dataset, create a ggplot2 scatter plot (`geom_point`) to visualize the relationship between `mpg` (miles per gallon) and `hp` (horsepower). Assign your plot to the variable `p1`.
@@ -258,8 +401,6 @@ This session aimed to not only broaden your understanding of ggplot2 but also to
 p1 <- ggplot(mtcars, aes(x = mpg, y = hp)) +
   geom_point()
 ```
-
-**gradethis Code:**
 
 ```{r}
 # grade_this_code()(
