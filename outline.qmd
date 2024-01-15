@@ -1,0 +1,59 @@
+---
+title: "CS 123 Teaching Demonstration: Data Visualization with ggplot in R"
+author: "Your Name"
+date: "Date of Presentation"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Introduction
+
+- **Brief Overview**: Introduction to the session, highlighting the connection between data visualization, art, and computation.
+- **Learning Objectives Recap**: Review the key learning objectives of CS 123.
+
+## Section 1: Data Manipulation Refresher
+
+- **Review of a Join Function**: Demonstrating how to merge datasets in R.
+- **Bind Rows**: Combining multiple datasets.
+- **Filter Function**: Extracting specific data based on conditions.
+- **Group By and Summarize**: Aggregating data for meaningful insights.
+
+## Section 2: Understanding ggplot and Layers
+
+- **Introduction to ggplot**: Basic concepts and syntax.
+- **Exploring Layers in ggplot**: How layers work to build a plot.
+
+## Section 3: Working with Data Frames
+
+- **Data Frame Structure**: Understanding rows and columns in the context of datasets.
+- **Variables and Plot Types**: How variable types dictate the choice of plots.
+
+## Section 4: Case Study - Music Data Analysis
+
+- **Dataset Introduction**: Spotify data on The Beatles, The Rolling Stones, and The Monkees.
+- **Interactive Coding**: Participants modify code to explore different `ggplot` functions:
+  - `geom_bar`
+  - `geom_violin`
+  - `geom_boxplot`
+  - `geom_point`
+
+## Section 5: Hands-on Exercise
+
+- **Task**: Observers will engage in programming a simple plot.
+- **Variables of Interest**: Number of Songs, Number of Albums, Valence, and Energy.
+- **Objective**: Understanding the practical application of `ggplot` in visualizing data.
+
+## Conclusion
+
+- **Recap of Key Points**: Summarizing what was covered in the demonstration.
+- **Q&A Session**: Open floor for questions and clarifications.
+- **Connecting to Course Objectives**: Relating the demonstration back to CS 123's objectives of understanding computational art, teamwork, and developing a personal aesthetic in digital creations.
+
+## References
+
+- **ggplot Documentation**: [Link to ggplot resources]
+- **Spotify Dataset Source**: [Link to the dataset used]
+

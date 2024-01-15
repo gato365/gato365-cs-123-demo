@@ -1,0 +1,82 @@
+---
+title: "Data Extraction and Manipulation"
+author: "Immanuel Williams PhD"
+---
+
+To facilitate the tasks you've outlined, we'll use the `spotifyr` package in R. This package is a great tool for accessing Spotify's Web API and can help us gather and manipulate data related to artists, albums, and tracks. Below, I'll provide you with R code snippets for each of your tasks. 
+
+Before you begin, ensure that you have the `spotifyr` package installed and loaded, and that you have valid Spotify API credentials (Client ID and Client Secret). Replace `"xxxxxxxxxxxxxxxxxxxxx"` with your actual credentials.
+
+**Task 1: Get Tracks from The Beatles, The Rolling Stones, and The Monkees**
+
+1. **Load the `spotifyr` Library and Authenticate:**
+
+```{r}
+#| message: false
+
+library(spotifyr)
+library(tidyverse)
+```
+
+```{r}
+
+
+# Load environment variables
+client_id <- Sys.getenv("SPOTIFY_CLIENT_ID")
+client_secret <- Sys.getenv("SPOTIFY_CLIENT_SECRET")
+
+# Authenticate using the loaded credentials
+# Authenticate using the credentials stored in environment variables
+access_token <- get_spotify_access_token()
+
+```
+
+2. **Get Data for Each Artist and Bind Rows:**
+
+```{r}
+beatles_tracks <- get_artist_audio_features("The Beatles")
+rolling_stones_tracks <- get_artist_audio_features("The Rolling Stones")
+monkees_tracks <- get_artist_audio_features("The Monkees")
+
+all_tracks <- bind_rows(beatles_tracks, rolling_stones_tracks, monkees_tracks)
+```
+
+3. **Filter Out Duplicates and Irrelevant Data:**
+
+Here, you'll need to decide what constitutes an irrelevant track. For simplicity, I'm removing duplicates based on track IDs.
+
+```{r}
+all_tracks_cleaned <- all_tracks %>% 
+distinct(track_id, .keep_all = TRUE)
+```
+
+**Task 2: Aggregate Information Based on Album and Artist**
+
+1. **Group by Album and Artist:**
+
+Aggregate data to get Energy, Valence, Number of Songs per Album, and Album Year. 
+
+```{r}
+album_info <- all_tracks_cleaned %>% 
+group_by(artist_name, album_name, album_release_year) %>%
+summarise(Energy = mean(energy),
+Valence = mean(valence),
+Number_of_Songs = n(),
+.groups = 'drop')
+```
+
+2. **Create an Overall DataFrame for Each Artist:**
+
+This DataFrame will show the number of songs, number of albums, and other noteworthy variables for each artist.
+
+```{r}
+artist_overview <- all_tracks_cleaned %>% 
+group_by(artist_name) %>%
+summarise(Number_of_Songs = n(),
+Number_of_Albums = n_distinct(album_name),
+Average_Energy = mean(energy),
+Average_Valence = mean(valence),
+.groups = 'drop')
+```
+
+Please note that this code is a general guide. The exact specifications, like what constitutes a duplicate or irrelevant track, may need to be adjusted based on your specific requirements and the structure of the data returned by the Spotify API. Additionally, be aware of any rate limits or restrictions imposed by the Spotify API.
