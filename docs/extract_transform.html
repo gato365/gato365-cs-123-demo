@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Immanuel Williams PhD">
 
-<title>CS 123 Teaching Demo - About</title>
+<title>CS 123 Teaching Demo - Data Extraction and Manipulation</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -97,7 +98,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-sidebar docked nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -119,12 +120,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./about.html" rel="" target="" aria-current="page">
- <span class="menu-text">About</span></a>
+    <a class="nav-link" href="./learning_objectives.html" rel="" target="">
+ <span class="menu-text">Learning Objectives</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./extract_manipulate.html" rel="" target="">
+    <a class="nav-link active" href="./extract_transform.html" rel="" target="" aria-current="page">
  <span class="menu-text">Data Extraction and Manipulation</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./about.html" rel="" target="">
+ <span class="menu-text">About Dr.&nbsp;Immanuel J. Williams</span></a>
   </li>  
 </ul>
             <div class="quarto-navbar-tools ms-auto">
@@ -132,26 +137,77 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Data Extraction and Manipulation</li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Basics</span></span>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#task-1-get-tracks-from-the-beatles-the-rolling-stones-and-the-monkees" id="toc-task-1-get-tracks-from-the-beatles-the-rolling-stones-and-the-monkees" class="nav-link active" data-scroll-target="#task-1-get-tracks-from-the-beatles-the-rolling-stones-and-the-monkees"><strong>Task 1: Get Tracks from The Beatles, The Rolling Stones, and The Monkees</strong></a>
+  <ul class="collapse">
+  <li><a href="#extract" id="toc-extract" class="nav-link" data-scroll-target="#extract">1. <strong>Load the <code>spotifyr</code> Library and Authenticate:</strong></a></li>
+  <li><a href="#bind" id="toc-bind" class="nav-link" data-scroll-target="#bind">2. <strong>Get Data for Each Artist and Bind Rows:</strong></a></li>
+  <li><a href="#filter" id="toc-filter" class="nav-link" data-scroll-target="#filter">3. <strong>Filter Out Duplicates and Irrelevant Data:</strong></a></li>
+  </ul></li>
+  <li><a href="#task-2-aggregate-information-based-on-album-and-artist" id="toc-task-2-aggregate-information-based-on-album-and-artist" class="nav-link" data-scroll-target="#task-2-aggregate-information-based-on-album-and-artist"><strong>Task 2: Aggregate Information Based on Album and Artist</strong></a>
+  <ul class="collapse">
+  <li><a href="#groupby" id="toc-groupby" class="nav-link" data-scroll-target="#groupby">1. <strong>Group by Album and Artist:</strong></a></li>
+  <li><a href="#create-an-overall-dataframe-for-each-artist" id="toc-create-an-overall-dataframe-for-each-artist" class="nav-link" data-scroll-target="#create-an-overall-dataframe-for-each-artist">2. <strong>Create an Overall DataFrame for Each Artist:</strong></a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">About</h1>
+<h1 class="title">Data Extraction and Manipulation</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Immanuel Williams PhD </p>
+          </div>
+  </div>
     
   
     
@@ -160,15 +216,88 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p>About this site</p>
+<p>To facilitate the tasks you’ve outlined, we’ll use the <code>spotifyr</code> package in R. This package is a great tool for accessing Spotify’s Web API and can help us gather and manipulate data related to artists, albums, and tracks. Below, I’ll provide you with R code snippets for each of your tasks.</p>
+<p>Before you begin, ensure that you have the <code>spotifyr</code> package installed and loaded, and that you have valid Spotify API credentials (Client ID and Client Secret). Replace <code>"xxxxxxxxxxxxxxxxxxxxx"</code> with your actual credentials.</p>
+<section id="task-1-get-tracks-from-the-beatles-the-rolling-stones-and-the-monkees" class="level2">
+<h2 class="anchored" data-anchor-id="task-1-get-tracks-from-the-beatles-the-rolling-stones-and-the-monkees"><strong>Task 1: Get Tracks from The Beatles, The Rolling Stones, and The Monkees</strong></h2>
+<section id="extract" class="level3">
+<h3 class="anchored" data-anchor-id="extract">1. <strong>Load the <code>spotifyr</code> Library and Authenticate:</strong></h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(spotifyr)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'tidyverse' was built under R version 4.3.2</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'ggplot2' was built under R version 4.3.1</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'purrr' was built under R version 4.3.1</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'lubridate' was built under R version 4.3.1</code></pre>
 </div>
 </div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load environment variables</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>client_id <span class="ot">&lt;-</span> <span class="fu">Sys.getenv</span>(<span class="st">"SPOTIFY_CLIENT_ID"</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>client_secret <span class="ot">&lt;-</span> <span class="fu">Sys.getenv</span>(<span class="st">"SPOTIFY_CLIENT_SECRET"</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Authenticate using the loaded credentials</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Authenticate using the credentials stored in environment variables</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>access_token <span class="ot">&lt;-</span> <span class="fu">get_spotify_access_token</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="bind" class="level3">
+<h3 class="anchored" data-anchor-id="bind">2. <strong>Get Data for Each Artist and Bind Rows:</strong></h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>beatles_tracks <span class="ot">&lt;-</span> <span class="fu">get_artist_audio_features</span>(<span class="st">"The Beatles"</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>rolling_stones_tracks <span class="ot">&lt;-</span> <span class="fu">get_artist_audio_features</span>(<span class="st">"The Rolling Stones"</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>monkees_tracks <span class="ot">&lt;-</span> <span class="fu">get_artist_audio_features</span>(<span class="st">"The Monkees"</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>all_tracks <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(beatles_tracks, rolling_stones_tracks, monkees_tracks)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="filter" class="level3">
+<h3 class="anchored" data-anchor-id="filter">3. <strong>Filter Out Duplicates and Irrelevant Data:</strong></h3>
+<p>Here, you’ll need to decide what constitutes an irrelevant track. For simplicity, I’m removing duplicates based on track IDs.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>all_tracks_cleaned <span class="ot">&lt;-</span> all_tracks <span class="sc">%&gt;%</span> </span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">distinct</span>(track_id, <span class="at">.keep_all =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="task-2-aggregate-information-based-on-album-and-artist" class="level2">
+<h2 class="anchored" data-anchor-id="task-2-aggregate-information-based-on-album-and-artist"><strong>Task 2: Aggregate Information Based on Album and Artist</strong></h2>
+<section id="groupby" class="level3">
+<h3 class="anchored" data-anchor-id="groupby">1. <strong>Group by Album and Artist:</strong></h3>
+<p>Aggregate data to get Energy, Valence, Number of Songs per Album, and Album Year.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>album_info <span class="ot">&lt;-</span> all_tracks_cleaned <span class="sc">%&gt;%</span> </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">group_by</span>(artist_name, album_name, album_release_year) <span class="sc">%&gt;%</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summarise</span>(<span class="at">Energy =</span> <span class="fu">mean</span>(energy),</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="at">Valence =</span> <span class="fu">mean</span>(valence),</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="at">Number_of_Songs =</span> <span class="fu">n</span>(),</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="at">.groups =</span> <span class="st">'drop'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="create-an-overall-dataframe-for-each-artist" class="level3">
+<h3 class="anchored" data-anchor-id="create-an-overall-dataframe-for-each-artist">2. <strong>Create an Overall DataFrame for Each Artist:</strong></h3>
+<p>This DataFrame will show the number of songs, number of albums, and other noteworthy variables for each artist.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>artist_overview <span class="ot">&lt;-</span> all_tracks_cleaned <span class="sc">%&gt;%</span> </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">group_by</span>(artist_name) <span class="sc">%&gt;%</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summarise</span>(<span class="at">Number_of_Songs =</span> <span class="fu">n</span>(),</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="at">Number_of_Albums =</span> <span class="fu">n_distinct</span>(album_name),</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="at">Average_Energy =</span> <span class="fu">mean</span>(energy),</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="at">Average_Valence =</span> <span class="fu">mean</span>(valence),</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="at">.groups =</span> <span class="st">'drop'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Please note that this code is a general guide. The exact specifications, like what constitutes a duplicate or irrelevant track, may need to be adjusted based on your specific requirements and the structure of the data returned by the Spotify API. Additionally, be aware of any rate limits or restrictions imposed by the Spotify API.</p>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

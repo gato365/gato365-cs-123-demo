@@ -13,8 +13,9 @@ load("music_data.rda")
 ```
 
 
-
+::: {.callout-note collapse="true"}
 ## Review of the Extract-Transform (E-T) Process
+
 
 ### *How did we get this data?*
 
@@ -27,7 +28,10 @@ load("music_data.rda")
 -   `Filter Function`: Filtering data in `all_tracks_cleaned_df`. [Refer to this section of the notes for additional information]().
 
 -   `Group By and Summarize`: Demonstrating these processes with `album_info_df` and `artist_overview_df`. [Further details can be found in this section of the notes]().
+:::
 
+
+::: {.callout-note collapse="true"}
 ## 0. Lets Visualize using ggplot
 
 ```{r}
@@ -43,32 +47,7 @@ library(ggplot2)
 -   ggplot2 is renowned for its ability to handle complex visualization tasks with ease, offering a wide range of plot types and customization options.
 
 
-------------------------------------------------------------------------
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
+:::
 
 ## 1. **Understanding Geoms**
 
@@ -88,40 +67,12 @@ We'll create a bar plot using `geom_bar()` with the `artist_overview_df` data fr
 
 # Bar plot to show the number of albums per artist
 ggplot(artist_overview_df, aes(x = artist_name, y = Number_of_Albums)) +
-  geom_bar(stat = 'identity') +
-  theme_minimal() +
-  labs(title = "Number of Albums by Artist",
-       x = "Artist",
-       y = "Number of Albums")
+  geom_bar(stat = 'identity') 
 ```
 
 This visualization will help us see which artist group released the most albums.
 
-------------------------------------------------------------------------
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+
 ### Investigating the Distribution - geom_violin
 
 #### *What were the energy levels of each group?*
@@ -142,31 +93,6 @@ ggplot(all_tracks_cleaned_df, aes(x = artist_name, y = energy, fill = artist_nam
 
 A violin plot is chosen here because it not only shows the distribution but also the density of the data points, giving a clearer picture than a boxplot.
 
-------------------------------------------------------------------------
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 
 ### Investigating a Relationship - geom_point
 
@@ -300,6 +226,11 @@ This one should Include Add the Frequency on top of each bar geom bar
 
 -   This will help viewers quickly understand the relationship between energy levels and valence in the dataset.
 
+
+
+
+
+
 ```{r}
 # Enhanced scatter plot with customized guides
 ggplot(album_info_df, aes(x = Energy, y = Valence, color = artist_name)) +
@@ -357,8 +288,11 @@ In this code snippet:
 
 Today's exploration of the ggplot2 package in R has taken us through the intricacies of Geoms, Stats, and Guides. We've utilized `all_tracks_cleaned_df`, `album_info_df`, and `artist_overview_df` to demonstrate the creation of compelling visualizations, from basic bar charts to insightful violin and scatter plots.
 
+
 -   **Geoms** showed the diverse ways data can be visually represented.
+
 -   **Stats** added a layer of depth by integrating statistical summaries.
+
 -   **Guides** enhanced our plots with clear legends and annotations, making them informative and accessible.
 
 This session aimed to not only broaden your understanding of ggplot2 but also to inspire its application in your data storytelling endeavors. Thank you for your engagement, and I encourage you to continue exploring the vast potential of data visualization.
