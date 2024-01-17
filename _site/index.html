@@ -182,10 +182,14 @@ Review of the Extract-Transform (E-T) Process
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <section id="how-did-we-get-this-data" class="level3 callout-body-container callout-body">
-<h3 class="anchored" data-anchor-id="how-did-we-get-this-data"><em>How did we get this data?</em></h3>
+<h3 class="anchored" data-anchor-id="how-did-we-get-this-data"><strong>How did we get this data?</strong></h3>
+<section id="extraction-of-data" class="level4">
+<h4 class="anchored" data-anchor-id="extraction-of-data"><strong>Extraction of Data:</strong></h4>
+<p>We extracted data using the Spotify API and transformed it using various dplyr functions. <a href="extract_transform.html">Link to Extraction and Transformation Process</a>. Additionally, <a href="https://www.causeweb.org/usproc/eusr/2022/virtual-posters/9">here’s a reference to research presented at a conference</a> of Extraction Transformation Visualization (ETV) a teaching data science technique.</p>
+</section>
+<section id="transformation-of-data" class="level4">
+<h4 class="anchored" data-anchor-id="transformation-of-data"><strong>Transformation of Data:</strong></h4>
 <ul>
-<li><p><strong>Overview</strong>: We extracted data using the Spotify API and transformed it using various dplyr functions. <a href="extract_transform.html">Link to Extraction and Transformation Process</a>. Additionally, <a href="https://www.causeweb.org/usproc/eusr/2022/virtual-posters/9">here’s a reference to research presented at a conference</a> of Extraction Transformation Visualization (ETV) a teaching data science technique.</p></li>
-<li><p><strong>Transformation of Data</strong>:</p></li>
 <li><p><code>Bind Rows</code>: Combining <code>all_tracks_df</code>. <a href="">See this section of the notes for more details</a>.</p></li>
 <li><p><code>Filter Function</code>: Filtering data in <code>all_tracks_cleaned_df</code>. <a href="">Refer to this section of the notes for additional information</a>.</p></li>
 <li><p><code>Group By and Summarize</code>: Demonstrating these processes with <code>album_info_df</code> and <code>artist_overview_df</code>. <a href="">Further details can be found in this section of the notes</a>.</p></li>
@@ -195,6 +199,7 @@ Review of the Extract-Transform (E-T) Process
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the data from the R data file</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"music_data.rda"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
 </section>
 </div>
 </div>
@@ -250,7 +255,7 @@ Introduction
 </div>
 </div>
 </div>
-<p>Now that we have the data, we must specify the variable(s) that we are interested to create a visualization.</p>
+<p><strong>Now that we have the data, we must specify the variable(s) that we are interested to create a visualization.</strong></p>
 </div>
 </div>
 </div>
@@ -352,12 +357,14 @@ Investigating Numeric Data - geom_boxplot
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Question 1:
+Questions
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
+<section id="question-1" class="level2">
+<h2 class="anchored" data-anchor-id="question-1">Question 1:</h2>
 <p>Convert a boxplot to a violin plot using the <code>geom_violin()</code> function. [Code]</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(all_tracks_cleaned_df, <span class="fu">aes</span>(<span class="at">x =</span> artist_name, <span class="at">y =</span> energy, <span class="at">fill =</span> artist_name)) <span class="sc">+</span></span>
@@ -366,6 +373,7 @@ Question 1:
 <p><img src="index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
+</section>
 <section id="question-2" class="level2">
 <h2 class="anchored" data-anchor-id="question-2">Question 2:</h2>
 <p>What do you notice about the violin plot compared to the boxplot? [Multiple Choice]</p>
@@ -412,16 +420,19 @@ Question 1:
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Question 3: Adding Summary Statistics to Geoms
+Questions
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
+<section id="question-3-adding-summary-statistics-to-geoms" class="level2">
+<h2 class="anchored" data-anchor-id="question-3-adding-summary-statistics-to-geoms">Question 3: Adding Summary Statistics to Geoms</h2>
 <ol type="a">
 <li><p>Complete the code to overlay text on the bars using geom_text().[Code]</p></li>
 <li><p>How many albums do The Monkees have? [Numeric]</p></li>
 </ol>
+</section>
 <section id="question-4" class="level2">
 <h2 class="anchored" data-anchor-id="question-4">Question 4:</h2>
 <p>What are the advantages of displaying numerical values on each bar in a bar chart? [Multiple Answers]</p>
@@ -471,12 +482,14 @@ Question 3: Adding Summary Statistics to Geoms
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Question 5: Enhancing Plots with Labels
+Questions
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-10" class="callout-10-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
+<section id="question-5-enhancing-plots-with-labels" class="level3">
+<h3 class="anchored" data-anchor-id="question-5-enhancing-plots-with-labels">Question 5: Enhancing Plots with Labels</h3>
 <p>We are creating a scatter plot with <code>geom_point</code> using the variables <code>album_age</code> and <code>Number_of_Songs</code>. Edit the code to include a title, axis labels, and a legend title that match the ones in the provided plot. Specifically, set the title to ‘Album Age vs Number of Songs: A Comparative Analysis’, the subtitle to ‘Scatter plot illustrating the correlation between album age and number of songs across artists’, the x-axis label to ‘Album Age (Years)’, the y-axis label to ‘Number of Songs’, and the color legend title to ‘Artist Name’. [Code]</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code to add labels to a scatter plot goes here</span></span>
@@ -508,6 +521,7 @@ Question 5: Enhancing Plots with Labels
 <p><img src="index_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
+</section>
 <section id="question-6-the-importance-of-labels" class="level3">
 <h3 class="anchored" data-anchor-id="question-6-the-importance-of-labels">Question 6: The Importance of Labels</h3>
 <p>What are some potential consequences of not including proper labels on our plots? Select all that apply. [Multiple Answers]</p>
@@ -530,7 +544,12 @@ Conclusion
 </div>
 <div id="callout-12" class="callout-12-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Proper use of geoms, statistical summaries, and labels are crucial for effective data visualization in ggplot2. They allow us to represent data clearly, make informed generalizations, and guide the audience through our visual narrative. As you continue to develop your ggplot2 skills, remember to consider not just how to present your data, but also how to best communicate the information and insights derived from it.</p>
+<p>Today’s exploration of the ggplot2 package in R has taken us through the intricacies of Geoms, Stats, and Guides. We’ve utilized <code>all_tracks_cleaned_df</code>, <code>album_info_df</code>, and <code>artist_overview_df</code> to demonstrate the creation of compelling visualizations, from basic bar charts to insightful violin and scatter plots.</p>
+<ul>
+<li><p><strong>geoms</strong> showed the diverse ways data can be visually represented.</p></li>
+<li><p><strong>Stats</strong> added a layer of depth by integrating statistical summaries.</p></li>
+<li><p><strong>Guides</strong> enhanced our plots with clear legends and annotations, making them informative and accessible.</p></li>
+</ul>
 </div>
 </div>
 </div>

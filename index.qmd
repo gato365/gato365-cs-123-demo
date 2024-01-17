@@ -10,11 +10,15 @@ title: "CS 123 Teaching Demonstration"
 ::: {.callout-note collapse="true"}
 ## Review of the Extract-Transform (E-T) Process
 
-### *How did we get this data?*
 
--   **Overview**: We extracted data using the Spotify API and transformed it using various dplyr functions. [Link to Extraction and Transformation Process](extract_transform.html). Additionally, [here's a reference to research presented at a conference](https://www.causeweb.org/usproc/eusr/2022/virtual-posters/9) of Extraction Transformation Visualization (ETV) a teaching data science technique.
 
--   **Transformation of Data**:
+### **How did we get this data?**
+
+#### **Extraction of Data:**
+
+We extracted data using the Spotify API and transformed it using various dplyr functions. [Link to Extraction and Transformation Process](extract_transform.html). Additionally, [here's a reference to research presented at a conference](https://www.causeweb.org/usproc/eusr/2022/virtual-posters/9) of Extraction Transformation Visualization (ETV) a teaching data science technique.
+
+#### **Transformation of Data:**
 
 -   `Bind Rows`: Combining `all_tracks_df`. [See this section of the notes for more details]().
 
@@ -73,7 +77,7 @@ library(ggplot2)
 ggplot(data = all_tracks_cleaned_df)
 ```
 
-Now that we have the data, we must specify the variable(s) that we are interested to create a visualization.
+**Now that we have the data, we must specify the variable(s) that we are interested to create a visualization.**
 :::
 
 ::: {.callout-note collapse="true"} 
@@ -150,6 +154,9 @@ You can investigate more geoms [here](https://ggplot2.tidyverse.org/reference/).
 :::
 
 ::: {.callout-note collapse="true"}
+
+# Questions
+
 ## Question 1:
 
 Convert a boxplot to a violin plot using the `geom_violin()` function. [Code]
@@ -192,6 +199,8 @@ ggplot(all_tracks_cleaned_df, aes(x = artist_name, y = energy, fill = artist_nam
 
 
 ::: {.callout-note collapse="true"}
+
+# Questions
 
 ## Question 3: Adding Summary Statistics to Geoms
 
@@ -237,6 +246,9 @@ ggplot(data = album_info_df , aes(x = Energy, y = Valence)) +
 
 
 ::: {.callout-note collapse="true"}
+
+# Questions
+
 ### Question 5: Enhancing Plots with Labels
 
 We are creating a scatter plot with `geom_point` using the variables `album_age` and `Number_of_Songs`. Edit the code to include a title, axis labels, and a legend title that match the ones in the provided plot. Specifically, set the title to 'Album Age vs Number of Songs: A Comparative Analysis', the subtitle to 'Scatter plot illustrating the correlation between album age and number of songs across artists', the x-axis label to 'Album Age (Years)', the y-axis label to 'Number of Songs', and the color legend title to 'Artist Name'. [Code]
@@ -276,7 +288,15 @@ What are some potential consequences of not including proper labels on our plots
 :::
 
 ::: {.callout-note collapse="true"}
+
 # Conclusion
 
-Proper use of geoms, statistical summaries, and labels are crucial for effective data visualization in ggplot2. They allow us to represent data clearly, make informed generalizations, and guide the audience through our visual narrative. As you continue to develop your ggplot2 skills, remember to consider not just how to present your data, but also how to best communicate the information and insights derived from it.
+Today's exploration of the ggplot2 package in R has taken us through the intricacies of Geoms, Stats, and Guides. We've utilized `all_tracks_cleaned_df`, `album_info_df`, and `artist_overview_df` to demonstrate the creation of compelling visualizations, from basic bar charts to insightful violin and scatter plots.
+
+
+-   **geoms** showed the diverse ways data can be visually represented.
+
+-   **Stats** added a layer of depth by integrating statistical summaries.
+
+-   **Guides** enhanced our plots with clear legends and annotations, making them informative and accessible.
 :::
