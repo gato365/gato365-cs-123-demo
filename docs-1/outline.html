@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Your Name">
 
-<title>CS 123 Teaching Demo - Learning Objectives</title>
+<title>CS 123 Teaching Demo - CS 123 Teaching Demonstration: Data Visualization with ggplot in R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -58,18 +59,12 @@ ul.task-list li input[type="checkbox"] {
     "search-submit-button-title": "Submit"
   }
 }</script>
-<style>
-.custom-green-header h1 {
-  color: green;
-  font-size: 2em;
-}
-</style>
 
 
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-sidebar docked nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -91,7 +86,7 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./learning_objectives.html" rel="" target="" aria-current="page">
+    <a class="nav-link" href="./learning_objectives.html" rel="" target="">
  <span class="menu-text">Learning Objectives</span></a>
   </li>  
   <li class="nav-item">
@@ -108,20 +103,53 @@ ul.task-list li input[type="checkbox"] {
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">CS 123 Teaching Demonstration: Data Visualization with ggplot in R</li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Basics</span></span>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link active" data-scroll-target="#learning-objectives">Learning Objectives:</a>
-  <ul class="collapse">
-  <li><a href="#who-had-more-energy-the-rolling-stones-the-beatles-and-the-monkees" id="toc-who-had-more-energy-the-rolling-stones-the-beatles-and-the-monkees" class="nav-link" data-scroll-target="#who-had-more-energy-the-rolling-stones-the-beatles-and-the-monkees"><em>Who had more energy The Rolling Stones, The Beatles and The Monkees?</em></a></li>
-  </ul></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#section-1-data-manipulation-refresher" id="toc-section-1-data-manipulation-refresher" class="nav-link" data-scroll-target="#section-1-data-manipulation-refresher">Section 1: Data Manipulation Refresher</a></li>
+  <li><a href="#section-2-understanding-ggplot-and-layers" id="toc-section-2-understanding-ggplot-and-layers" class="nav-link" data-scroll-target="#section-2-understanding-ggplot-and-layers">Section 2: Understanding ggplot and Layers</a></li>
+  <li><a href="#section-3-working-with-data-frames" id="toc-section-3-working-with-data-frames" class="nav-link" data-scroll-target="#section-3-working-with-data-frames">Section 3: Working with Data Frames</a></li>
+  <li><a href="#section-4-case-study---music-data-analysis" id="toc-section-4-case-study---music-data-analysis" class="nav-link" data-scroll-target="#section-4-case-study---music-data-analysis">Section 4: Case Study - Music Data Analysis</a></li>
+  <li><a href="#section-5-hands-on-exercise" id="toc-section-5-hands-on-exercise" class="nav-link" data-scroll-target="#section-5-hands-on-exercise">Section 5: Hands-on Exercise</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
 </nav>
     </div>
@@ -130,14 +158,26 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Learning Objectives</h1>
+<h1 class="title">CS 123 Teaching Demonstration: Data Visualization with ggplot in R</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Your Name </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">Invalid Date</p>
+    </div>
+  </div>
   
     
   </div>
@@ -145,48 +185,73 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="learning-objectives" class="level2">
-<h2 class="anchored" data-anchor-id="learning-objectives">Learning Objectives:</h2>
-<section id="who-had-more-energy-the-rolling-stones-the-beatles-and-the-monkees" class="level3">
-<h3 class="anchored" data-anchor-id="who-had-more-energy-the-rolling-stones-the-beatles-and-the-monkees"><em>Who had more energy The Rolling Stones, The Beatles and The Monkees?</em></h3>
-<ol type="1">
-<li><strong>ggplot: Layered Approach</strong></li>
-</ol>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
 <ul>
-<li><strong>Description</strong>: ggplot builds plots using a layered approach. Each layer adds a new element to the plot, making complex visualizations achievable through simple building blocks.</li>
+<li><strong>Brief Overview</strong>: Introduction to the session, highlighting the connection between data visualization, art, and computation.</li>
+<li><strong>Learning Objectives Recap</strong>: Review the key learning objectives of CS 123.</li>
 </ul>
-<ol start="2" type="1">
-<li><strong>Geom: Visual Representation</strong></li>
-</ol>
-<ul>
-<li><strong>Description</strong>: Geoms (geometric objects) are the heart of a ggplot plot. They provide the visual representations of data.</li>
-<li><strong>Examples</strong>:</li>
-<li><em>Points</em> for scatter plots</li>
-<li><em>Boxplots</em> and <em>Violin Plots</em> for showing distributions and comparing groups</li>
-<li><em>Bars</em> for bar charts</li>
-</ul>
-<ol start="3" type="1">
-<li><strong>Stat: Statistical Transformations</strong></li>
-</ol>
-<ul>
-<li><strong>Description</strong>: Statistical transformations (Stats) process your data to create summaries or perform calculations.</li>
-<li><strong>Key Concepts</strong>:</li>
-<li><em>Counting</em> data points</li>
-<li><em>Summarizing</em> datasets</li>
-</ul>
-<ol start="4" type="1">
-<li><strong>Guide: Annotations and Legends</strong></li>
-</ol>
-<ul>
-<li><strong>Description</strong>: Guides include all the necessary annotations to make a plot readable and informative.</li>
-<li><strong>Elements</strong>:</li>
-<li><em>Legends</em> to explain scales</li>
-<li><em>Axis labels</em> for clarity</li>
-<li><em>Title and subtitles</em> for context</li>
-</ul>
-
-
 </section>
+<section id="section-1-data-manipulation-refresher" class="level2">
+<h2 class="anchored" data-anchor-id="section-1-data-manipulation-refresher">Section 1: Data Manipulation Refresher</h2>
+<ul>
+<li><strong>Review of a Join Function</strong>: Demonstrating how to merge datasets in R.</li>
+<li><strong>Bind Rows</strong>: Combining multiple datasets.</li>
+<li><strong>Filter Function</strong>: Extracting specific data based on conditions.</li>
+<li><strong>Group By and Summarize</strong>: Aggregating data for meaningful insights.</li>
+</ul>
+</section>
+<section id="section-2-understanding-ggplot-and-layers" class="level2">
+<h2 class="anchored" data-anchor-id="section-2-understanding-ggplot-and-layers">Section 2: Understanding ggplot and Layers</h2>
+<ul>
+<li><strong>Introduction to ggplot</strong>: Basic concepts and syntax.</li>
+<li><strong>Exploring Layers in ggplot</strong>: How layers work to build a plot.</li>
+</ul>
+</section>
+<section id="section-3-working-with-data-frames" class="level2">
+<h2 class="anchored" data-anchor-id="section-3-working-with-data-frames">Section 3: Working with Data Frames</h2>
+<ul>
+<li><strong>Data Frame Structure</strong>: Understanding rows and columns in the context of datasets.</li>
+<li><strong>Variables and Plot Types</strong>: How variable types dictate the choice of plots.</li>
+</ul>
+</section>
+<section id="section-4-case-study---music-data-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="section-4-case-study---music-data-analysis">Section 4: Case Study - Music Data Analysis</h2>
+<ul>
+<li><strong>Dataset Introduction</strong>: Spotify data on The Beatles, The Rolling Stones, and The Monkees.</li>
+<li><strong>Interactive Coding</strong>: Participants modify code to explore different <code>ggplot</code> functions:
+<ul>
+<li><code>geom_bar</code></li>
+<li><code>geom_violin</code></li>
+<li><code>geom_boxplot</code></li>
+<li><code>geom_point</code></li>
+</ul></li>
+</ul>
+</section>
+<section id="section-5-hands-on-exercise" class="level2">
+<h2 class="anchored" data-anchor-id="section-5-hands-on-exercise">Section 5: Hands-on Exercise</h2>
+<ul>
+<li><strong>Task</strong>: Observers will engage in programming a simple plot.</li>
+<li><strong>Variables of Interest</strong>: Number of Songs, Number of Albums, Valence, and Energy.</li>
+<li><strong>Objective</strong>: Understanding the practical application of <code>ggplot</code> in visualizing data.</li>
+</ul>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<ul>
+<li><strong>Recap of Key Points</strong>: Summarizing what was covered in the demonstration.</li>
+<li><strong>Q&amp;A Session</strong>: Open floor for questions and clarifications.</li>
+<li><strong>Connecting to Course Objectives</strong>: Relating the demonstration back to CS 123’s objectives of understanding computational art, teamwork, and developing a personal aesthetic in digital creations.</li>
+</ul>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ul>
+<li><strong>ggplot Documentation</strong>: [Link to ggplot resources]</li>
+<li><strong>Spotify Dataset Source</strong>: [Link to the dataset used]</li>
+</ul>
+
+
 </section>
 
 </main> <!-- /main -->

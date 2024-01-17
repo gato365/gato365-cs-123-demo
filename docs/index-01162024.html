@@ -121,7 +121,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" rel="" target="" aria-current="page">
+    <a class="nav-link" href="./index.html" rel="" target="">
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
@@ -148,13 +148,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#width375height425" id="toc-width375height425" class="nav-link active" data-scroll-target="#width375height425"><img src="images/music_groups.jpg" class="img-fluid">{width=“375”,height=“425”}</a></li>
-  </ul>
-</nav>
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -176,8 +170,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<section id="width375height425" class="level2">
-<h2 class="anchored" data-anchor-id="width375height425"><img src="images/music_groups.jpg" class="img-fluid">{width=“375”,height=“425”}</h2>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -190,14 +182,10 @@ Review of the Extract-Transform (E-T) Process
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <section id="how-did-we-get-this-data" class="level3 callout-body-container callout-body">
-<h3 class="anchored" data-anchor-id="how-did-we-get-this-data"><strong>How did we get this data?</strong></h3>
-<section id="extraction-of-data" class="level4">
-<h4 class="anchored" data-anchor-id="extraction-of-data"><strong>Extraction of Data:</strong></h4>
-<p>We extracted data using the Spotify API and transformed it using various dplyr functions. <a href="extract_transform.html">Link to Extraction and Transformation Process</a>. Additionally, <a href="https://www.causeweb.org/usproc/eusr/2022/virtual-posters/9">here’s a reference to research presented at a conference</a> of Extraction Transformation Visualization (ETV) a teaching data science technique.</p>
-</section>
-<section id="transformation-of-data" class="level4">
-<h4 class="anchored" data-anchor-id="transformation-of-data"><strong>Transformation of Data:</strong></h4>
+<h3 class="anchored" data-anchor-id="how-did-we-get-this-data"><em>How did we get this data?</em></h3>
 <ul>
+<li><p><strong>Overview</strong>: We extracted data using the Spotify API and transformed it using various dplyr functions. <a href="extract_transform.html">Link to Extraction and Transformation Process</a>. Additionally, <a href="https://www.causeweb.org/usproc/eusr/2022/virtual-posters/9">here’s a reference to research presented at a conference</a> of Extraction Transformation Visualization (ETV) a teaching data science technique.</p></li>
+<li><p><strong>Illustration with Data</strong>:</p></li>
 <li><p><code>Bind Rows</code>: Combining <code>all_tracks_df</code>. <a href="">See this section of the notes for more details</a>.</p></li>
 <li><p><code>Filter Function</code>: Filtering data in <code>all_tracks_cleaned_df</code>. <a href="">Refer to this section of the notes for additional information</a>.</p></li>
 <li><p><code>Group By and Summarize</code>: Demonstrating these processes with <code>album_info_df</code> and <code>artist_overview_df</code>. <a href="">Further details can be found in this section of the notes</a>.</p></li>
@@ -208,7 +196,6 @@ Review of the Extract-Transform (E-T) Process
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"music_data.rda"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-</section>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -217,53 +204,29 @@ Review of the Extract-Transform (E-T) Process
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Introduction
+0. Lets Visualize using ggplot
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>In this module, we will explore how to create visualizations using the <code>ggplot2</code> package in R.</p>
-<p>We’ll focus on understanding:</p>
-<ul>
-<li><p>geoms: the different types of geometric objects</p></li>
-<li><p>Summary Statistics: The stat_summary function can calculate summary statistics (like mean, median, min, max, etc.) for each group of data</p></li>
-<li><p>The importance of labels in making plots informative.</p></li>
-</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'ggplot2' was built under R version 4.3.1</code></pre>
 </div>
 </div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> all_tracks_cleaned_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="index-01162024_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
 </div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
-0. Lets Visualize using ggplot
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
 <ul>
 <li><p>The ggplot2 package in R is a powerful and flexible system for creating data visualizations.</p></li>
 <li><p>Built upon the principles of the Grammar of Graphics, it allows users to construct plots by layering components systematically.</p></li>
 <li><p>ggplot2 is renowned for its ability to handle complex visualization tasks with ease, offering a wide range of plot types and customization options.</p></li>
 </ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> all_tracks_cleaned_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p><strong>Now that we have the data, we must specify the variable(s) that we are interested to create a visualization.</strong></p>
 </div>
 </div>
 </div>
@@ -273,32 +236,16 @@ Introduction
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-1. <strong>Understanding Geoms</strong>
+1. <strong>Understanding geoms</strong>
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>Definition</strong>: Geoms (geometric objects) are the visual representations of data in ggplot2. Examples include points, lines, and bars.</p>
-<section id="but-wait-we-have-to-understand" class="level2">
-<h2 class="anchored" data-anchor-id="but-wait-we-have-to-understand"><strong>But wait … we have to understand</strong></h2>
-</section>
-<section id="variables" class="level2">
-<h2 class="anchored" data-anchor-id="variables">Variables</h2>
-<p>Typically, I determine:</p>
-<ol type="1">
-<li><p>What is/are variable(s) that are in your question.</p></li>
-<li><p>How many variables are you investigating?</p></li>
-<li><p>What are the variable types? Strings or numeric.</p></li>
-</ol>
-<p>Based on this information we can then determine how we can represent that information in a visualization.</p>
-</section>
-<section id="geoms-in-ggplot2" class="level2">
-<h2 class="anchored" data-anchor-id="geoms-in-ggplot2">geoms in ggplot2</h2>
-<p>geoms, or geometric objects, are the fundamental visual representations of data in ggplot2.</p>
-<p>Depending on the type of data and the story we want to tell, we choose different geoms.</p>
+<p><strong>Definition</strong>: geoms (geometric objects) are the visual representations of data in ggplot2. Examples include points, lines, and bars.</p>
+<p><strong>Illustration with Data</strong>:</p>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -307,22 +254,51 @@ Investigating Count Data - geom_bar
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <section id="which-group-had-the-most-albums" class="level4 callout-body-container callout-body">
 <h4 class="anchored" data-anchor-id="which-group-had-the-most-albums"><em>Which group had the most albums?</em></h4>
-<p><strong>Type of Data</strong>: One or more variables that are strings (e.g., “Artist”)</p>
+<p><strong>Type of Data</strong>: One or more categorical variables (e.g., “Artist”)</p>
 <p>We’ll create a bar plot using <code>geom_bar()</code> with the <code>artist_overview_df</code> data frame to visualize the count of albums by each artist group.</p>
-<div class="custom-class" data-collapse="true">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Bar plot to show the number of albums per artist</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(artist_overview_df, <span class="fu">aes</span>(<span class="at">x =</span> artist_name, <span class="at">y =</span> Number_of_Albums)) <span class="sc">+</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">'identity'</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Bar plot to show the number of albums per artist</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(artist_overview_df, <span class="fu">aes</span>(<span class="at">x =</span> artist_name, <span class="at">y =</span> Number_of_Albums)) <span class="sc">+</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">'identity'</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+<p><img src="index-01162024_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>This visualization will help us see which artist group released the most albums.</p>
+</section>
 </div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Investigating the Distribution - geom_violin
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<section id="what-were-the-energy-levels-of-each-group" class="level4 callout-body-container callout-body">
+<h4 class="anchored" data-anchor-id="what-were-the-energy-levels-of-each-group"><em>What were the energy levels of each group?</em></h4>
+<p><strong>Type of Data</strong>: One categorical variable (Artist) and one numeric variable (Energy)</p>
+<p>Using <code>geom_violin()</code> with the <code>all_tracks_cleaned_df</code>, we’ll create a violin plot to visualize the distribution of energy levels across different artist groups.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Violin plot to show the distribution of energy levels per artist</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(all_tracks_cleaned_df, <span class="fu">aes</span>(<span class="at">x =</span> artist_name, <span class="at">y =</span> energy, <span class="at">fill =</span> artist_name)) <span class="sc">+</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>() <span class="sc">+</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribution of Energy Levels by Artist"</span>,</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Artist"</span>,</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Energy Level"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="index-01162024_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>A violin plot is chosen here because it not only shows the distribution but also the density of the data points, giving a clearer picture than a boxplot.</p>
 </section>
 </div>
 </div>
@@ -332,31 +308,28 @@ Investigating Count Data - geom_bar
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Investigating Numeric Data - geom_boxplot
+Investigating a Relationship - geom_point
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<section id="what-were-the-energy-levels-of-each-group" class="level4">
-<h4 class="anchored" data-anchor-id="what-were-the-energy-levels-of-each-group"><em>What were the energy levels of each group?</em></h4>
-<p><strong>Type of Data</strong>: One string variable (Artist) and one numeric variable (Energy)</p>
-<p>Using <code>geom_boxplot()</code> with the <code>all_tracks_cleaned_df</code>, we’ll create a boxplot to visualize the distribution of energy levels across different artist groups.</p>
-</section>
-<section id="code-and-visualization" class="level2 custom-class" data-collapse="true">
-<h2 class="anchored" data-anchor-id="code-and-visualization">Code and Visualization</h2>
+<section id="what-is-the-relationship-between-energy-levels-and-valence-across-groups" class="level4 callout-body-container callout-body">
+<h4 class="anchored" data-anchor-id="what-is-the-relationship-between-energy-levels-and-valence-across-groups"><em>What is the relationship between energy levels and valence across groups?</em></h4>
+<p>First, we’ll create a scatter plot using <code>geom_point()</code> with <code>album_info_df</code> to explore the relationship between energy levels and valence without specifying artists.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Boxplot to show the distribution of energy levels per artist</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(all_tracks_cleaned_df, <span class="fu">aes</span>(<span class="at">x =</span> artist_name, <span class="at">y =</span> energy, <span class="at">fill =</span> artist_name)) <span class="sc">+</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Scatter plot for energy levels vs valence</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(album_info_df, <span class="fu">aes</span>(<span class="at">x =</span> Energy, <span class="at">y =</span> Valence)) <span class="sc">+</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Relationship Between Energy Levels and Valence"</span>,</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Energy"</span>,</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Valence"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+<p><img src="index-01162024_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-</section>
-<p>This visualization will help us see the median, IQR, and skewness of numeric data.</p>
 <p>You can investigate more geoms <a href="https://ggplot2.tidyverse.org/reference/">here</a>.</p>
-</div>
+</section>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -365,31 +338,69 @@ Investigating Numeric Data - geom_boxplot
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Questions
+In Class Practice
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<section id="question-1" class="level2">
-<h2 class="anchored" data-anchor-id="question-1">Question 1:</h2>
-<p>Convert a boxplot to a violin plot using the <code>geom_violin()</code> function. [Code]</p>
+<p>Turn this into a question in which the student is asked to use color = artist_name ““” Next, we’ll add the artist specification to the plot for a more detailed analysis.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(all_tracks_cleaned_df, <span class="fu">aes</span>(<span class="at">x =</span> artist_name, <span class="at">y =</span> energy, <span class="at">fill =</span> artist_name)) <span class="sc">+</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Scatter plot with artist specification</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(album_info_df, <span class="fu">aes</span>(<span class="at">x =</span> Energy, <span class="at">y =</span> Valence, <span class="at">color =</span> artist_name)) <span class="sc">+</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Energy Levels vs Valence by Artist"</span>,</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Energy"</span>,</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Valence"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
+<p><img src="index-01162024_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-</section>
-<section id="question-2" class="level2">
-<h2 class="anchored" data-anchor-id="question-2">Question 2:</h2>
-<p>What do you notice about the violin plot compared to the boxplot? [Multiple Choice]</p>
-</section>
+<p>This approach allows us to first observe the general trend and then delve deeper into how this relationship might differ across different artist groups.</p>
 </div>
 </div>
 </div>
-</section>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+2. Exploring Stats within ggplot
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li><p><strong>Definition</strong>: In ggplot2, Stats (statistical transformations) are fundamental components that transform and summarize data.</p></li>
+<li><p>These transformations include basic tasks like counting occurrences, to more complex operations like calculating means or medians, making them crucial for data analysis and interpretation.</p></li>
+<li><p><strong>Illustration with Data</strong>:</p></li>
+<li><p>We will use <code>stat_summary()</code> in conjunction with <code>geom_violin()</code> to enhance our violin plot. By applying <code>stat_summary()</code>, we can overlay summary statistics, such as mean or median, on the violin plot created from <code>all_tracks_cleaned_df</code>.</p></li>
+<li><p>This approach not only visualizes the distribution of energy levels across different artist groups but also marks key statistical indicators for more insightful data interpretation.</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Enhanced Violin plot with summary statistics for energy levels per artist</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(all_tracks_cleaned_df, <span class="fu">aes</span>(<span class="at">x =</span> artist_name, <span class="at">y =</span> energy, <span class="at">fill =</span> artist_name)) <span class="sc">+</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>() <span class="sc">+</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun =</span> mean, <span class="at">geom =</span> <span class="st">"point"</span>, <span class="at">shape =</span> <span class="dv">20</span>, <span class="at">size =</span> <span class="dv">3</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribution of Energy Levels by Artist with Statistical Summary"</span>,</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Artist"</span>,</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Energy Level"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="index-01162024_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<ul>
+<li><p>In this code snippet, <code>stat_summary()</code> is used to plot the mean energy levels as points on the violin plot.</p></li>
+<li><p>The <code>mean</code> function calculates the average energy level for each artist, and the resulting point is plotted on top of the corresponding violin plot.</p></li>
+<li><p>This enhancement provides a clear visual indicator of the central tendency of the energy distribution for each artist, adding depth to our data analysis.</p></li>
+</ul>
 </div>
 </div>
 </div>
@@ -399,55 +410,36 @@ Questions
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-2. Exploring Stats within ggplot
+In Class Practice
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-9" class="callout-9-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<ul>
-<li><p><strong>Definition</strong>: In ggplot2, stats are key elements that help summarize and represent data. They allow us to visualize the central tendency or the most typical value in the data. One of the functions used for this purpose is stat_summary().</p></li>
-<li><p>We will use <code>stat_summary()</code> in conjunction with <code>geom_violin()</code> to enhance our violin plot. By applying <code>stat_summary()</code>, we can overlay summary statistics, such as mean or median, on the violin plot created from <code>all_tracks_cleaned_df</code>.</p></li>
-<li><p>This approach not only visualizes the distribution of energy levels across different artist groups but also marks key statistical indicators for more insightful data interpretation.</p></li>
-</ul>
-<section id="code-and-visualization-1" class="level1 custom-class" data-collapse="true">
-<h1>Code and Visualization</h1>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Enhanced Violin plot with summary statistics for energy levels per artist</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(all_tracks_cleaned_df, <span class="fu">aes</span>(<span class="at">x =</span> artist_name, <span class="at">y =</span> energy, <span class="at">fill =</span> artist_name)) <span class="sc">+</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>() <span class="sc">+</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun =</span> mean, <span class="at">geom =</span> <span class="st">"point"</span>, <span class="at">shape =</span> <span class="dv">20</span>, <span class="at">size =</span> <span class="dv">6</span>, <span class="at">color =</span> <span class="st">"black"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+
 </div>
 </div>
-</section>
+</div>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Questions
+Conclusion
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<section id="question-3-adding-summary-statistics-to-geoms" class="level2">
-<h2 class="anchored" data-anchor-id="question-3-adding-summary-statistics-to-geoms">Question 3: Adding Summary Statistics to Geoms</h2>
-<ol type="a">
-<li><p>Complete the code to overlay text on the bars using geom_text().[Code]</p></li>
-<li><p>How many albums do The Monkees have? [Numeric]</p></li>
-</ol>
-</section>
-<section id="question-4" class="level2">
-<h2 class="anchored" data-anchor-id="question-4">Question 4:</h2>
-<p>What are the advantages of displaying numerical values on each bar in a bar chart? [Multiple Answers]</p>
-</section>
-</div>
-</div>
-</div>
+<p>Today’s exploration of the ggplot2 package in R has taken us through the intricacies of geoms, Stats, and Guides. We’ve utilized <code>all_tracks_cleaned_df</code>, <code>album_info_df</code>, and <code>artist_overview_df</code> to demonstrate the creation of compelling visualizations, from basic bar charts to insightful violin and scatter plots.</p>
+<ul>
+<li><strong>geoms</strong> showed the diverse ways data can be visually represented.</li>
+<li><strong>Stats</strong> added a layer of depth by integrating statistical summaries.<br>
+</li>
+<li><strong>Guides</strong> enhanced our plots with clear legends and annotations, making them informative and accessible.</li>
+</ul>
+<p>This session aimed to not only broaden your understanding of ggplot2 but also to inspire its application in your data storytelling endeavors. Thank you for your engagement, and I encourage you to continue exploring the vast potential of data visualization.</p>
 </div>
 </div>
 </div>
@@ -457,113 +449,75 @@ Questions
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-3. Guide: Legends and Annotations
+Need to clean
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-11" class="callout-11-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<ul>
-<li><p><strong>Definition</strong>: In ggplot2, guides are critical elements that enhance the interpretability of a plot. They include legends, axes labels, titles, and other annotations, serving as navigational tools that provide context and improve readability.</p></li>
-<li><p>To demonstrate the importance of guides, we will enhance a scatter plot created from <code>album_info_df</code>.</p></li>
-</ul>
-<section id="code-and-visualization-2" class="level2 custom-class" data-collapse="true">
-<h2 class="anchored" data-anchor-id="code-and-visualization-2">Code and Visualization</h2>
+<section id="question-1-geoms" class="level3">
+<h3 class="anchored" data-anchor-id="question-1-geoms">Question 1: geoms</h3>
+<p><strong>Prompt:</strong> Using the <code>mtcars</code> dataset, create a ggplot2 scatter plot (<code>geom_point</code>) to visualize the relationship between <code>mpg</code> (miles per gallon) and <code>hp</code> (horsepower). Assign your plot to the variable <code>p1</code>.</p>
+<p><strong>Solution:</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example code for adding labels to a plot</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> album_info_df , <span class="fu">aes</span>(<span class="at">x =</span> Energy, <span class="at">y =</span> Valence)) <span class="sc">+</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Energy vs Valence: Exploring Album Characteristics"</span>,</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"A scatter plot illustrating the relationship between energy and valence in albums"</span>,</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Energy"</span>,</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Valence"</span></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-</section>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Questions
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-10" class="callout-10-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<section id="question-5-enhancing-plots-with-labels" class="level3">
-<h3 class="anchored" data-anchor-id="question-5-enhancing-plots-with-labels">Question 5: Enhancing Plots with Labels</h3>
-<p>We are creating a scatter plot with <code>geom_point</code> using the variables <code>album_age</code> and <code>Number_of_Songs</code>. Edit the code to include a title, axis labels, and a legend title that match the ones in the provided plot. Specifically, set the title to ‘Album Age vs Number of Songs: A Comparative Analysis’, the subtitle to ‘Scatter plot illustrating the correlation between album age and number of songs across artists’, the x-axis label to ‘Album Age (Years)’, the y-axis label to ‘Number of Songs’, and the color legend title to ‘Artist Name’. [Code]</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code to add labels to a scatter plot goes here</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> album_info_df, <span class="fu">aes</span>(<span class="at">x =</span> album_age, <span class="at">y =</span> Number_of_Songs, <span class="at">color =</span> artist_name)) <span class="sc">+</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Plot Title: Relationship Between X and Y"</span>,</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Information about plot"</span>,</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"X Variable Name"</span>,</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Y Variable Name"</span>,</span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Legend Name"</span></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
-</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x =</span> mpg, <span class="at">y =</span> hp)) <span class="sc">+</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code to add labels to a scatter plot goes here</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> album_info_df, <span class="fu">aes</span>(<span class="at">x =</span> album_age, <span class="at">y =</span> Number_of_Songs, <span class="at">color =</span> artist_name)) <span class="sc">+</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Album Age vs Number of Songs: A Comparative Analysis"</span>,</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Scatter plot illustrating the correlation between album age and number of songs across artists"</span>,</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Album Age (Years)"</span>,</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Number of Songs"</span>,</span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Artist Name"</span></span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># grade_this_code()(</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co">#   pass_if(~ identical(.result, p1),</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co">#           "Excellent work! Your scatter plot correctly visualizes the relationship between mpg and hp."),</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co">#   fail_if(~ !inherits(.result, "ggplot"),</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co">#           "Make sure you are using ggplot2 for plotting."),</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co">#   fail("Your plot does not match the expected output. Check your aes() mappings.")</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="co"># )</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<hr>
+</section>
+<section id="question-2-stat_summary" class="level3">
+<h3 class="anchored" data-anchor-id="question-2-stat_summary">Question 2: stat_summary</h3>
+<p><strong>Prompt:</strong> Create a ggplot2 visualization using the <code>mtcars</code> dataset that displays the average <code>mpg</code> for each cylinder group (<code>cyl</code>). Use <code>geom_bar()</code> and <code>stat_summary()</code> to achieve this. Store your plot in the variable <code>p2</code>.</p>
+<p><strong>Solution:</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(cyl))) <span class="sc">+</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"summary"</span>, <span class="at">fun =</span> mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>gradethis Code:</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># grade_this_code()(</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co">#   pass_if(~ identical(.result, p2),</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co">#           "Well done! Your plot correctly shows the average mpg for each cylinder group."),</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co">#   fail_if(~ !("summary" %in% sapply(.result$layers, function(x) x$stat)),</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co">#           "Remember to use stat='summary' in geom_bar."),</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="co">#   fail("Your plot doesn't seem to be correct. Ensure you're using the mean function for stat_summary.")</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co"># )</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="question-6-the-importance-of-labels" class="level3">
-<h3 class="anchored" data-anchor-id="question-6-the-importance-of-labels">Question 6: The Importance of Labels</h3>
-<p>What are some potential consequences of not including proper labels on our plots? Select all that apply. [Multiple Answers]</p>
+<section id="question-3-labels" class="level3">
+<h3 class="anchored" data-anchor-id="question-3-labels">Question 3: Labels</h3>
+<p><strong>Prompt:</strong> Using the <code>mtcars</code> dataset, create a ggplot2 scatter plot of <code>mpg</code> vs <code>wt</code> (weight). Add labels for the x-axis (“Miles per Gallon”), y-axis (“Weight (1000 lbs)”), and the plot title (“MPG vs Weight”). Save this plot as <code>p3</code>.</p>
+<p><strong>Solution:</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(<span class="at">x =</span> mpg, <span class="at">y =</span> wt)) <span class="sc">+</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"MPG vs Weight"</span>, <span class="at">x =</span> <span class="st">"Miles per Gallon"</span>, <span class="at">y =</span> <span class="st">"Weight (1000 lbs)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>gradethis Code:</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># grade_this_code()(</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co">#   pass_if(~ identical(.result, p3),</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co">#           "Great job! Your labels are correctly added to the scatter plot."),</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co">#   fail_if(~ any(c("Miles per Gallon", "Weight (1000 lbs)", "MPG vs Weight") %in% c(.result$labels$title, .result$labels$x, .result$labels$y)),</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="co">#           "Check if you've added all the required labels correctly."),</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="co">#   fail("There seems to be an issue with your plot. Review the labels and try again.")</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="co"># )</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Conclusion
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-12" class="callout-12-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Today’s exploration of the ggplot2 package in R has taken us through the intricacies of Geoms, Stats, and Guides. We’ve utilized <code>all_tracks_cleaned_df</code>, <code>album_info_df</code>, and <code>artist_overview_df</code> to demonstrate the creation of compelling visualizations, from basic bar charts to insightful violin and scatter plots.</p>
-<ul>
-<li><p><strong>geoms</strong> showed the diverse ways data can be visually represented.</p></li>
-<li><p><strong>Stats</strong> added a layer of depth by integrating statistical summaries.</p></li>
-<li><p><strong>Guides</strong> enhanced our plots with clear legends and annotations, making them informative and accessible.</p></li>
-</ul>
 </div>
 </div>
 </div>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

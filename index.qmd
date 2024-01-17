@@ -2,6 +2,9 @@
 title: "CS 123 Teaching Demonstration"
 ---
 
+
+## ![](images/music_groups.jpg){width="375",height="425"}
+
 ```{r setup }
 #| include: false
 
