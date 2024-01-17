@@ -3,7 +3,11 @@ title: "CS 123 Teaching Demonstration"
 ---
 
 
-## ![](images/music_groups.jpg){width="375",height="425"}
+## Let'a analyze these artists
+
+<!-- ![](images/music_groups.jpg){width="375",height="425"} -->
+<img src="images/music_groups.jpg" alt="alt text" width="375" height="425"/>
+
 
 ```{r setup }
 #| include: false
@@ -12,8 +16,6 @@ title: "CS 123 Teaching Demonstration"
 
 ::: {.callout-note collapse="true"}
 ## Review of the Extract-Transform (E-T) Process
-
-
 
 ### **How did we get this data?**
 
@@ -41,8 +43,6 @@ load("music_data.rda")
 
 album_info_df <- dplyr::mutate(album_info_df, album_age = 2024 - album_release_year)
 ```
-
-
 :::
 
 ::: {.callout-note collapse="true"}
@@ -83,8 +83,7 @@ ggplot(data = all_tracks_cleaned_df)
 **Now that we have the data, we must specify the variable(s) that we are interested to create a visualization.**
 :::
 
-::: {.callout-note collapse="true"} 
-
+::: {.callout-note collapse="true"}
 # 1. **Understanding Geoms**
 
 **Definition**: Geoms (geometric objects) are the visual representations of data in ggplot2. Examples include points, lines, and bars.
@@ -128,7 +127,6 @@ ggplot(artist_overview_df, aes(x = artist_name, y = Number_of_Albums)) +
 
 This visualization will help us see which artist group released the most albums.
 :::
-
 :::
 
 ::: {.callout-note collapse="true"}
@@ -142,6 +140,7 @@ Using `geom_boxplot()` with the `all_tracks_cleaned_df`, we'll create a boxplot 
 
 ::: {.custom-class collapse="true"}
 ## Code and Visualization
+
 ```{r}
 # Boxplot to show the distribution of energy levels per artist
 ggplot(all_tracks_cleaned_df, aes(x = artist_name, y = energy, fill = artist_name)) +
@@ -149,33 +148,27 @@ ggplot(all_tracks_cleaned_df, aes(x = artist_name, y = energy, fill = artist_nam
 ```
 :::
 
-
-
 This visualization will help us see the median, IQR, and skewness of numeric data.
 
 You can investigate more geoms [here](https://ggplot2.tidyverse.org/reference/).
 :::
 
 ::: {.callout-note collapse="true"}
-
 # Questions
 
 ## Question 1:
 
-Convert a boxplot to a violin plot using the `geom_violin()` function. [Code]
+Convert a boxplot to a violin plot using the `geom_violin()` function. \[Code\]
 
 ```{r}
 ggplot(all_tracks_cleaned_df, aes(x = artist_name, y = energy, fill = artist_name)) +
   geom_violin()
 ```
 
-
-
 ## Question 2:
 
-What do you notice about the violin plot compared to the boxplot? [Multiple Choice]
+What do you notice about the violin plot compared to the boxplot? \[Multiple Choice\]
 :::
-
 :::
 
 ::: {.callout-note collapse="true"}
@@ -188,7 +181,6 @@ What do you notice about the violin plot compared to the boxplot? [Multiple Choi
 -   This approach not only visualizes the distribution of energy levels across different artist groups but also marks key statistical indicators for more insightful data interpretation.
 
 ::: {.custom-class collapse="true"}
-
 # Code and Visualization
 
 ```{r}
@@ -199,28 +191,19 @@ ggplot(all_tracks_cleaned_df, aes(x = artist_name, y = energy, fill = artist_nam
 ```
 :::
 
-
-
 ::: {.callout-note collapse="true"}
-
 # Questions
 
 ## Question 3: Adding Summary Statistics to Geoms
 
-a. Complete the code to overlay text on the bars using geom_text().[Code] 
+a.  Complete the code to overlay text on the bars using geom_text().\[Code\]
 
-
-b. How many albums do The Monkees have? [Numeric]
-
-
+b.  How many albums do The Monkees have? \[Numeric\]
 
 ## Question 4:
-What are the advantages of displaying numerical values on each bar in a bar chart? [Multiple Answers]
 
-
+What are the advantages of displaying numerical values on each bar in a bar chart? \[Multiple Answers\]
 :::
-
-
 :::
 
 ::: {.callout-note collapse="true"}
@@ -230,9 +213,9 @@ What are the advantages of displaying numerical values on each bar in a bar char
 
 -   To demonstrate the importance of guides, we will enhance a scatter plot created from `album_info_df`.
 
-
 ::: {.custom-class collapse="true"}
 ## Code and Visualization
+
 ```{r}
 # Example code for adding labels to a plot
 ggplot(data = album_info_df , aes(x = Energy, y = Valence)) +
@@ -247,14 +230,12 @@ ggplot(data = album_info_df , aes(x = Energy, y = Valence)) +
 ```
 :::
 
-
 ::: {.callout-note collapse="true"}
-
 # Questions
 
 ### Question 5: Enhancing Plots with Labels
 
-We are creating a scatter plot with `geom_point` using the variables `album_age` and `Number_of_Songs`. Edit the code to include a title, axis labels, and a legend title that match the ones in the provided plot. Specifically, set the title to 'Album Age vs Number of Songs: A Comparative Analysis', the subtitle to 'Scatter plot illustrating the correlation between album age and number of songs across artists', the x-axis label to 'Album Age (Years)', the y-axis label to 'Number of Songs', and the color legend title to 'Artist Name'. [Code]
+We are creating a scatter plot with `geom_point` using the variables `album_age` and `Number_of_Songs`. Edit the code to include a title, axis labels, and a legend title that match the ones in the provided plot. Specifically, set the title to 'Album Age vs Number of Songs: A Comparative Analysis', the subtitle to 'Scatter plot illustrating the correlation between album age and number of songs across artists', the x-axis label to 'Album Age (Years)', the y-axis label to 'Number of Songs', and the color legend title to 'Artist Name'. \[Code\]
 
 ```{r}
 # Your code to add labels to a scatter plot goes here
@@ -282,20 +263,16 @@ ggplot(data = album_info_df, aes(x = album_age, y = Number_of_Songs, color = art
   )
 ```
 
-
-
 ### Question 6: The Importance of Labels
 
-What are some potential consequences of not including proper labels on our plots? Select all that apply. [Multiple Answers]
+What are some potential consequences of not including proper labels on our plots? Select all that apply. \[Multiple Answers\]
 :::
 :::
 
 ::: {.callout-note collapse="true"}
-
 # Conclusion
 
 Today's exploration of the ggplot2 package in R has taken us through the intricacies of Geoms, Stats, and Guides. We've utilized `all_tracks_cleaned_df`, `album_info_df`, and `artist_overview_df` to demonstrate the creation of compelling visualizations, from basic bar charts to insightful violin and scatter plots.
-
 
 -   **geoms** showed the diverse ways data can be visually represented.
 
