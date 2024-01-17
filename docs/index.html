@@ -152,7 +152,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#width375height425" id="toc-width375height425" class="nav-link active" data-scroll-target="#width375height425"><img src="images/music_groups.jpg" class="img-fluid">{width=“375”,height=“425”}</a></li>
+  <li><a href="#leta-analyze-these-artists" id="toc-leta-analyze-these-artists" class="nav-link active" data-scroll-target="#leta-analyze-these-artists">Let’a analyze these artists</a></li>
   </ul>
 </nav>
     </div>
@@ -176,25 +176,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<section id="width375height425" class="level2">
-<h2 class="anchored" data-anchor-id="width375height425"><img src="images/music_groups.jpg" class="img-fluid">{width=“375”,height=“425”}</h2>
+<section id="leta-analyze-these-artists" class="level2">
+<h2 class="anchored" data-anchor-id="leta-analyze-these-artists">Let’a analyze these artists</h2>
+<p><img src="images/music_groups.jpg" alt="alt text" width="375" height="425"></p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Review of the Extract-Transform (E-T) Process
+Review of the Extract &amp; Transform
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
-<section id="how-did-we-get-this-data" class="level3 callout-body-container callout-body">
+<div class="callout-body-container callout-body">
+<p><a href="https://www.causeweb.org/usproc/eusr/2022/virtual-posters/9">ETV</a></p>
+<section id="how-did-we-get-this-data" class="level3">
 <h3 class="anchored" data-anchor-id="how-did-we-get-this-data"><strong>How did we get this data?</strong></h3>
 <section id="extraction-of-data" class="level4">
 <h4 class="anchored" data-anchor-id="extraction-of-data"><strong>Extraction of Data:</strong></h4>
-<p>We extracted data using the Spotify API and transformed it using various dplyr functions. <a href="extract_transform.html">Link to Extraction and Transformation Process</a>. Additionally, <a href="https://www.causeweb.org/usproc/eusr/2022/virtual-posters/9">here’s a reference to research presented at a conference</a> of Extraction Transformation Visualization (ETV) a teaching data science technique.</p>
+<p>We extracted data using the Spotify API and transformed it using various dplyr functions. <a href="extract_transform.html">Review Extraction and Transformation Process</a>.</p>
 </section>
+</section>
+<section id="how-did-we-clean-this-data" class="level3">
+<h3 class="anchored" data-anchor-id="how-did-we-clean-this-data"><strong>How did we clean this data?</strong></h3>
 <section id="transformation-of-data" class="level4">
 <h4 class="anchored" data-anchor-id="transformation-of-data"><strong>Transformation of Data:</strong></h4>
 <ul>
@@ -211,13 +217,14 @@ Review of the Extract-Transform (E-T) Process
 </section>
 </div>
 </div>
+</div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Introduction
+Introduction to the package <code>ggplot2</code>
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -239,16 +246,16 @@ Introduction
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-0. Lets Visualize using ggplot
+0. Lets visualize using ggplot
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
-<li><p>The ggplot2 package in R is a powerful and flexible system for creating data visualizations.</p></li>
-<li><p>Built upon the principles of the Grammar of Graphics, it allows users to construct plots by layering components systematically.</p></li>
-<li><p>ggplot2 is renowned for its ability to handle complex visualization tasks with ease, offering a wide range of plot types and customization options.</p></li>
+<li><p>The ggplot2 package in R is a powerful and <strong>flexible system for creating data visualizations</strong>.</p></li>
+<li><p>Built upon the principles of the Grammar of Graphics, it allows users to construct plots by <strong>layering components systematically</strong>.</p></li>
+<li><p>ggplot2 is renowned for its ability to handle complex visualization tasks with ease, offering a <strong>wide range of plot types and customization options</strong>.</p></li>
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -273,13 +280,12 @@ Introduction
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-1. <strong>Understanding Geoms</strong>
+1. <strong>geoms</strong>
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>Definition</strong>: Geoms (geometric objects) are the visual representations of data in ggplot2. Examples include points, lines, and bars.</p>
 <section id="but-wait-we-have-to-understand" class="level2">
 <h2 class="anchored" data-anchor-id="but-wait-we-have-to-understand"><strong>But wait … we have to understand</strong></h2>
 </section>
@@ -287,14 +293,15 @@ Introduction
 <h2 class="anchored" data-anchor-id="variables">Variables</h2>
 <p>Typically, I determine:</p>
 <ol type="1">
-<li><p>What is/are variable(s) that are in your question.</p></li>
-<li><p>How many variables are you investigating?</p></li>
+<li><p>What your question?</p></li>
+<li><p>How many variables are in your question?</p></li>
 <li><p>What are the variable types? Strings or numeric.</p></li>
 </ol>
 <p>Based on this information we can then determine how we can represent that information in a visualization.</p>
 </section>
 <section id="geoms-in-ggplot2" class="level2">
 <h2 class="anchored" data-anchor-id="geoms-in-ggplot2">geoms in ggplot2</h2>
+<p><strong>Definition</strong>: geoms (geometric objects) are the visual representations of data in ggplot2. Examples include points, lines, and bars.</p>
 <p>geoms, or geometric objects, are the fundamental visual representations of data in ggplot2.</p>
 <p>Depending on the type of data and the story we want to tell, we choose different geoms.</p>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -399,7 +406,7 @@ Questions
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-2. Exploring Stats within ggplot
+2. Stats within ggplot
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>

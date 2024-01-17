@@ -2,12 +2,9 @@
 title: "CS 123 Teaching Demonstration"
 ---
 
-
 ## Let'a analyze these artists
 
-<!-- ![](images/music_groups.jpg){width="375",height="425"} -->
 <img src="images/music_groups.jpg" alt="alt text" width="375" height="425"/>
-
 
 ```{r setup }
 #| include: false
@@ -15,13 +12,19 @@ title: "CS 123 Teaching Demonstration"
 ```
 
 ::: {.callout-note collapse="true"}
-## Review of the Extract-Transform (E-T) Process
+
+## Review of the Extract & Transform 
+
+[ETV](https://www.causeweb.org/usproc/eusr/2022/virtual-posters/9) 
 
 ### **How did we get this data?**
 
+
 #### **Extraction of Data:**
 
-We extracted data using the Spotify API and transformed it using various dplyr functions. [Link to Extraction and Transformation Process](extract_transform.html). Additionally, [here's a reference to research presented at a conference](https://www.causeweb.org/usproc/eusr/2022/virtual-posters/9) of Extraction Transformation Visualization (ETV) a teaching data science technique.
+We extracted data using the Spotify API and transformed it using various dplyr functions. [Review Extraction and Transformation Process](extract_transform.html). 
+
+### **How did we clean this data?**
 
 #### **Transformation of Data:**
 
@@ -46,7 +49,7 @@ album_info_df <- dplyr::mutate(album_info_df, album_age = 2024 - album_release_y
 :::
 
 ::: {.callout-note collapse="true"}
-# Introduction
+# Introduction to the package `ggplot2`
 
 In this module, we will explore how to create visualizations using the `ggplot2` package in R.
 
@@ -60,13 +63,13 @@ We'll focus on understanding:
 :::
 
 ::: {.callout-note collapse="true"}
-## 0. Lets Visualize using ggplot
+## 0. Lets visualize using ggplot
 
--   The ggplot2 package in R is a powerful and flexible system for creating data visualizations.
+-   The ggplot2 package in R is a powerful and **flexible system for creating data visualizations**.
 
--   Built upon the principles of the Grammar of Graphics, it allows users to construct plots by layering components systematically.
+-   Built upon the principles of the Grammar of Graphics, it allows users to construct plots by **layering components systematically**.
 
--   ggplot2 is renowned for its ability to handle complex visualization tasks with ease, offering a wide range of plot types and customization options.
+-   ggplot2 is renowned for its ability to handle complex visualization tasks with ease, offering a **wide range of plot types and customization options**.
 
 ```{r}
 #| message: false
@@ -84,9 +87,7 @@ ggplot(data = all_tracks_cleaned_df)
 :::
 
 ::: {.callout-note collapse="true"}
-# 1. **Understanding Geoms**
-
-**Definition**: Geoms (geometric objects) are the visual representations of data in ggplot2. Examples include points, lines, and bars.
+# 1. **geoms**
 
 ## **But wait ... we have to understand**
 
@@ -94,15 +95,17 @@ ggplot(data = all_tracks_cleaned_df)
 
 Typically, I determine:
 
-1.  What is/are variable(s) that are in your question.
+1.  What your question?
 
-2.  How many variables are you investigating?
+2.  How many variables are in your question?
 
 3.  What are the variable types? Strings or numeric.
 
 Based on this information we can then determine how we can represent that information in a visualization.
 
 ## geoms in ggplot2
+
+**Definition**: geoms (geometric objects) are the visual representations of data in ggplot2. Examples include points, lines, and bars.
 
 geoms, or geometric objects, are the fundamental visual representations of data in ggplot2.
 
@@ -172,7 +175,7 @@ What do you notice about the violin plot compared to the boxplot? \[Multiple Cho
 :::
 
 ::: {.callout-note collapse="true"}
-# 2. Exploring Stats within ggplot
+# 2. Stats within ggplot
 
 -   **Definition**: In ggplot2, stats are key elements that help summarize and represent data. They allow us to visualize the central tendency or the most typical value in the data. One of the functions used for this purpose is stat_summary().
 
