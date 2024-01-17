@@ -1,5 +1,5 @@
 ---
-title: "CS 123 Teaching Demo"
+title: "CS 123 Teaching Demonstration"
 ---
 
 ```{r setup }
@@ -7,38 +7,53 @@ title: "CS 123 Teaching Demo"
 
 ```
 
-```{r}
-# Load the data from the R data file
-load("music_data.rda")
-```
-
-
 ::: {.callout-note collapse="true"}
 ## Review of the Extract-Transform (E-T) Process
-
 
 ### *How did we get this data?*
 
 -   **Overview**: We extracted data using the Spotify API and transformed it using various dplyr functions. [Link to Extraction and Transformation Process](extract_transform.html). Additionally, [here's a reference to research presented at a conference](https://www.causeweb.org/usproc/eusr/2022/virtual-posters/9) of Extraction Transformation Visualization (ETV) a teaching data science technique.
 
--   **Illustration with Data**:
+-   **Transformation of Data**:
 
 -   `Bind Rows`: Combining `all_tracks_df`. [See this section of the notes for more details]().
 
 -   `Filter Function`: Filtering data in `all_tracks_cleaned_df`. [Refer to this section of the notes for additional information]().
 
 -   `Group By and Summarize`: Demonstrating these processes with `album_info_df` and `artist_overview_df`. [Further details can be found in this section of the notes]().
+
+We are going to load the data from our previous work with following code:
+
+```{r}
+# Load the data from the R data file
+load("music_data.rda")
+```
+
+```{r}
+#| include: false
+
+album_info_df <- dplyr::mutate(album_info_df, album_age = 2024 - album_release_year)
+```
+
+
 :::
 
+::: {.callout-note collapse="true"}
+# Introduction
+
+In this module, we will explore how to create visualizations using the `ggplot2` package in R.
+
+We'll focus on understanding:
+
+-   geoms: the different types of geometric objects
+
+-   Summary Statistics: The stat_summary function can calculate summary statistics (like mean, median, min, max, etc.) for each group of data
+
+-   The importance of labels in making plots informative.
+:::
 
 ::: {.callout-note collapse="true"}
 ## 0. Lets Visualize using ggplot
-
-```{r}
-#| message: false
-
-library(ggplot2)
-```
 
 -   The ggplot2 package in R is a powerful and flexible system for creating data visualizations.
 
@@ -46,23 +61,57 @@ library(ggplot2)
 
 -   ggplot2 is renowned for its ability to handle complex visualization tasks with ease, offering a wide range of plot types and customization options.
 
+```{r}
+#| message: false
+#| warning: false
 
+library(ggplot2)
+```
+
+```{r}
+#| fig-align: center
+ggplot(data = all_tracks_cleaned_df)
+```
+
+Now that we have the data, we must specify the variable(s) that we are interested to create a visualization.
 :::
 
-## 1. **Understanding Geoms**
+::: {.callout-note collapse="true"} 
+
+# 1. **Understanding Geoms**
 
 **Definition**: Geoms (geometric objects) are the visual representations of data in ggplot2. Examples include points, lines, and bars.
 
-**Illustration with Data**:
+## **But wait ... we have to understand**
 
+## Variables
+
+Typically, I determine:
+
+1.  What is/are variable(s) that are in your question.
+
+2.  How many variables are you investigating?
+
+3.  What are the variable types? Strings or numeric.
+
+Based on this information we can then determine how we can represent that information in a visualization.
+
+## geoms in ggplot2
+
+geoms, or geometric objects, are the fundamental visual representations of data in ggplot2.
+
+Depending on the type of data and the story we want to tell, we choose different geoms.
+
+::: {.callout-note collapse="true"}
 ### Investigating Count Data - geom_bar
 
 #### *Which group had the most albums?*
 
-**Type of Data**: One or more categorical variables (e.g., "Artist")
+**Type of Data**: One or more variables that are strings (e.g., "Artist")
 
 We'll create a bar plot using `geom_bar()` with the `artist_overview_df` data frame to visualize the count of albums by each artist group.
 
+::: {.custom-class collapse="true"}
 ```{r}
 
 # Bar plot to show the number of albums per artist
@@ -71,334 +120,163 @@ ggplot(artist_overview_df, aes(x = artist_name, y = Number_of_Albums)) +
 ```
 
 This visualization will help us see which artist group released the most albums.
+:::
 
+:::
 
-### Investigating the Distribution - geom_violin
+::: {.callout-note collapse="true"}
+### Investigating Numeric Data - geom_boxplot
 
 #### *What were the energy levels of each group?*
 
-**Type of Data**: One categorical variable (Artist) and one numeric variable (Energy)
+**Type of Data**: One string variable (Artist) and one numeric variable (Energy)
 
-Using `geom_violin()` with the `all_tracks_cleaned_df`, we'll create a violin plot to visualize the distribution of energy levels across different artist groups.
+Using `geom_boxplot()` with the `all_tracks_cleaned_df`, we'll create a boxplot to visualize the distribution of energy levels across different artist groups.
 
+::: {.custom-class collapse="true"}
+## Code and Visualization
 ```{r}
-# Violin plot to show the distribution of energy levels per artist
+# Boxplot to show the distribution of energy levels per artist
 ggplot(all_tracks_cleaned_df, aes(x = artist_name, y = energy, fill = artist_name)) +
-  geom_violin() +
-  theme_minimal() +
-  labs(title = "Distribution of Energy Levels by Artist",
-       x = "Artist",
-       y = "Energy Level")
+  geom_boxplot() 
 ```
+:::
 
-A violin plot is chosen here because it not only shows the distribution but also the density of the data points, giving a clearer picture than a boxplot.
 
 
-### Investigating a Relationship - geom_point
-
-#### *What is the relationship between energy levels and valence across groups?*
-
-First, we'll create a scatter plot using `geom_point()` with `album_info_df` to explore the relationship between energy levels and valence without specifying artists.
-
-```{r}
-# Scatter plot for energy levels vs valence
-ggplot(album_info_df, aes(x = Energy, y = Valence)) +
-  geom_point() +
-  theme_minimal() +
-  labs(title = "Relationship Between Energy Levels and Valence",
-       x = "Energy",
-       y = "Valence")
-```
+This visualization will help us see the median, IQR, and skewness of numeric data.
 
 You can investigate more geoms [here](https://ggplot2.tidyverse.org/reference/).
+:::
 
-### In Class Practice
+::: {.callout-note collapse="true"}
+## Question 1:
 
-Turn this into a question in which the student is asked to use color = artist_name """ Next, we'll add the artist specification to the plot for a more detailed analysis.
+Convert a boxplot to a violin plot using the `geom_violin()` function. [Code]
 
 ```{r}
-# Scatter plot with artist specification
-ggplot(album_info_df, aes(x = Energy, y = Valence, color = artist_name)) +
-  geom_point() +
-  theme_minimal() +
-  labs(title = "Energy Levels vs Valence by Artist",
-       x = "Energy",
-       y = "Valence")
+ggplot(all_tracks_cleaned_df, aes(x = artist_name, y = energy, fill = artist_name)) +
+  geom_violin()
 ```
 
-This approach allows us to first observe the general trend and then delve deeper into how this relationship might differ across different artist groups. """
-------------------------------------------------------------------------
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 
-## 2. Exploring Stats within ggplot
 
--   **Definition**: In ggplot2, Stats (statistical transformations) are fundamental components that transform and summarize data.
+## Question 2:
 
--   These transformations include basic tasks like counting occurrences, to more complex operations like calculating means or medians, making them crucial for data analysis and interpretation.
+What do you notice about the violin plot compared to the boxplot? [Multiple Choice]
+:::
 
--   **Illustration with Data**:
+:::
+
+::: {.callout-note collapse="true"}
+# 2. Exploring Stats within ggplot
+
+-   **Definition**: In ggplot2, stats are key elements that help summarize and represent data. They allow us to visualize the central tendency or the most typical value in the data. One of the functions used for this purpose is stat_summary().
 
 -   We will use `stat_summary()` in conjunction with `geom_violin()` to enhance our violin plot. By applying `stat_summary()`, we can overlay summary statistics, such as mean or median, on the violin plot created from `all_tracks_cleaned_df`.
 
 -   This approach not only visualizes the distribution of energy levels across different artist groups but also marks key statistical indicators for more insightful data interpretation.
 
+::: {.custom-class collapse="true"}
+
+# Code and Visualization
+
 ```{r}
 # Enhanced Violin plot with summary statistics for energy levels per artist
 ggplot(all_tracks_cleaned_df, aes(x = artist_name, y = energy, fill = artist_name)) +
   geom_violin() +
-  stat_summary(fun = mean, geom = "point", shape = 20, size = 3, color = "black") +
-  theme_minimal() +
-  labs(title = "Distribution of Energy Levels by Artist with Statistical Summary",
-       x = "Artist",
-       y = "Energy Level")
+  stat_summary(fun = mean, geom = "point", shape = 20, size = 6, color = "black")
 ```
+:::
 
--   In this code snippet, `stat_summary()` is used to plot the mean energy levels as points on the violin plot.
 
--   The `mean` function calculates the average energy level for each artist, and the resulting point is plotted on top of the corresponding violin plot.
 
--   This enhancement provides a clear visual indicator of the central tendency of the energy distribution for each artist, adding depth to our data analysis.
+::: {.callout-note collapse="true"}
 
-------------------------------------------------------------------------
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+## Question 3: Adding Summary Statistics to Geoms
 
-### In Class Practice
+a. Complete the code to overlay text on the bars using geom_text().[Code] 
 
-This one should Include Add the Frequency on top of each bar geom bar
 
-## 3. Guide: Legends and Annotations
+b. How many albums do The Monkees have? [Numeric]
+
+
+
+## Question 4:
+What are the advantages of displaying numerical values on each bar in a bar chart? [Multiple Answers]
+
+
+:::
+
+
+:::
+
+::: {.callout-note collapse="true"}
+# 3. Guide: Legends and Annotations
 
 -   **Definition**: In ggplot2, guides are critical elements that enhance the interpretability of a plot. They include legends, axes labels, titles, and other annotations, serving as navigational tools that provide context and improve readability.
 
--   Guides help in making the plots self-explanatory by clearly indicating what each visual element represents.
-
--   **Illustration with Data**:
-
 -   To demonstrate the importance of guides, we will enhance a scatter plot created from `album_info_df`.
 
--   We'll focus on customizing the legend and adding meaningful axes labels and a descriptive title.
 
--   This will help viewers quickly understand the relationship between energy levels and valence in the dataset.
-
-
-
-
-
-
+::: {.custom-class collapse="true"}
+## Code and Visualization
 ```{r}
-# Enhanced scatter plot with customized guides
-ggplot(album_info_df, aes(x = Energy, y = Valence, color = artist_name)) +
-geom_point() +
-scale_color_manual(values = c("blue", "red", "green")) +
-labs(title = "Relationship Between Energy Levels and Valence by Artist",
-subtitle = "Visualizing data from 'album_info_df'",
-x = "Energy",
-y = "Valence",
-color = "Artist Group") +
-theme(legend.position = "bottom")
-```
-
-In this code snippet:
-
--   `aes(color = artist_name)` is used to differentiate data points by artist, adding a color legend to the plot.
-
--   `scale_color_manual()` allows us to manually specify the colors used in the plot, enhancing visual appeal and clarity.
-
--   The `labs()` function is used to add a title, subtitle, and custom labels for axes and the legend, providing context to the plot.
-
--   `theme(legend.position = "bottom")` adjusts the legend's position for better layout and readability.
-
--   This enhanced section provides an in-depth understanding of the role of guides in ggplot2 and illustrates their application with a practical example.
-
--   By customizing legends and annotations, we can significantly improve the effectiveness of our data visualizations, making them more informative and accessible to the audience.
-------------------------------------------------------------------------
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-### In Class Practice
-
-## Conclusion
-
-Today's exploration of the ggplot2 package in R has taken us through the intricacies of Geoms, Stats, and Guides. We've utilized `all_tracks_cleaned_df`, `album_info_df`, and `artist_overview_df` to demonstrate the creation of compelling visualizations, from basic bar charts to insightful violin and scatter plots.
-
-
--   **Geoms** showed the diverse ways data can be visually represented.
-
--   **Stats** added a layer of depth by integrating statistical summaries.
-
--   **Guides** enhanced our plots with clear legends and annotations, making them informative and accessible.
-
-This session aimed to not only broaden your understanding of ggplot2 but also to inspire its application in your data storytelling endeavors. Thank you for your engagement, and I encourage you to continue exploring the vast potential of data visualization.
-------------------------------------------------------------------------
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-### Question 1: Geoms
-
-**Prompt:** Using the `mtcars` dataset, create a ggplot2 scatter plot (`geom_point`) to visualize the relationship between `mpg` (miles per gallon) and `hp` (horsepower). Assign your plot to the variable `p1`.
-
-```{r question1, exercise=TRUE}
-
-```
-
-**Solution:**
-
-```{r}
-p1 <- ggplot(mtcars, aes(x = mpg, y = hp)) +
-  geom_point()
-```
-
-```{r}
-# grade_this_code()(
-#   pass_if(~ identical(.result, p1),
-#           "Excellent work! Your scatter plot correctly visualizes the relationship between mpg and hp."),
-#   fail_if(~ !inherits(.result, "ggplot"),
-#           "Make sure you are using ggplot2 for plotting."),
-#   fail("Your plot does not match the expected output. Check your aes() mappings.")
-# )
-```
-
-------------------------------------------------------------------------
-
-### Question 2: stat_summary
-
-**Prompt:** Create a ggplot2 visualization using the `mtcars` dataset that displays the average `mpg` for each cylinder group (`cyl`). Use `geom_bar()` and `stat_summary()` to achieve this. Store your plot in the variable `p2`.
-
-```{r question2, exercise=TRUE}
-
-```
-
-**Solution:**
-
-```{r}
-p2 <- ggplot(mtcars, aes(x = factor(cyl))) +
-  geom_bar(stat = "summary", fun = mean)
-```
-
-**gradethis Code:**
-
-```{r}
-# grade_this_code()(
-#   pass_if(~ identical(.result, p2),
-#           "Well done! Your plot correctly shows the average mpg for each cylinder group."),
-#   fail_if(~ !("summary" %in% sapply(.result$layers, function(x) x$stat)),
-#           "Remember to use stat='summary' in geom_bar."),
-#   fail("Your plot doesn't seem to be correct. Ensure you're using the mean function for stat_summary.")
-# )
-```
-
-### Question 3: Labels
-
-```{r question3, exercise=TRUE}
-
-```
-
-**Prompt:** Using the `mtcars` dataset, create a ggplot2 scatter plot of `mpg` vs `wt` (weight). Add labels for the x-axis ("Miles per Gallon"), y-axis ("Weight (1000 lbs)"), and the plot title ("MPG vs Weight"). Save this plot as `p3`.
-
-**Solution:**
-
-```{r}
-p3 <- ggplot(mtcars, aes(x = mpg, y = wt)) +
+# Example code for adding labels to a plot
+ggplot(data = album_info_df , aes(x = Energy, y = Valence)) +
   geom_point() +
-  labs(title = "MPG vs Weight", x = "Miles per Gallon", y = "Weight (1000 lbs)")
-```
+  labs(
+    title = "Energy vs Valence: Exploring Album Characteristics",
+    subtitle = "A scatter plot illustrating the relationship between energy and valence in albums",
+    x = "Energy",
+    y = "Valence"
+  )
 
-**gradethis Code:**
+```
+:::
+
+
+::: {.callout-note collapse="true"}
+### Question 5: Enhancing Plots with Labels
+
+We are creating a scatter plot with `geom_point` using the variables `album_age` and `Number_of_Songs`. Edit the code to include a title, axis labels, and a legend title that match the ones in the provided plot. Specifically, set the title to 'Album Age vs Number of Songs: A Comparative Analysis', the subtitle to 'Scatter plot illustrating the correlation between album age and number of songs across artists', the x-axis label to 'Album Age (Years)', the y-axis label to 'Number of Songs', and the color legend title to 'Artist Name'. [Code]
 
 ```{r}
-# grade_this_code()(
-#   pass_if(~ identical(.result, p3),
-#           "Great job! Your labels are correctly added to the scatter plot."),
-#   fail_if(~ any(c("Miles per Gallon", "Weight (1000 lbs)", "MPG vs Weight") %in% c(.result$labels$title, .result$labels$x, .result$labels$y)),
-#           "Check if you've added all the required labels correctly."),
-#   fail("There seems to be an issue with your plot. Review the labels and try again.")
-# )
+# Your code to add labels to a scatter plot goes here
+ggplot(data = album_info_df, aes(x = album_age, y = Number_of_Songs, color = artist_name)) +
+  geom_point() +
+  labs(
+    title = "Plot Title: Relationship Between X and Y",
+    subtitle = "Information about plot",
+    x = "X Variable Name",
+    y = "Y Variable Name",
+    color = "Legend Name"
+  )
 ```
+
+```{r}
+# Your code to add labels to a scatter plot goes here
+ggplot(data = album_info_df, aes(x = album_age, y = Number_of_Songs, color = artist_name)) +
+  geom_point() +
+  labs(
+    title = "Album Age vs Number of Songs: A Comparative Analysis",
+    subtitle = "Scatter plot illustrating the correlation between album age and number of songs across artists",
+    x = "Album Age (Years)",
+    y = "Number of Songs",
+    color = "Artist Name"
+  )
+```
+
+
+
+### Question 6: The Importance of Labels
+
+What are some potential consequences of not including proper labels on our plots? Select all that apply. [Multiple Answers]
+:::
+:::
+
+::: {.callout-note collapse="true"}
+# Conclusion
+
+Proper use of geoms, statistical summaries, and labels are crucial for effective data visualization in ggplot2. They allow us to represent data clearly, make informed generalizations, and guide the audience through our visual narrative. As you continue to develop your ggplot2 skills, remember to consider not just how to present your data, but also how to best communicate the information and insights derived from it.
+:::

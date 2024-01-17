@@ -1,0 +1,1 @@
+Students with download R and R studio but they will do their interactions with content with questions via gradethis and learnr 

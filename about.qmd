@@ -33,11 +33,15 @@ Phone: (732) 207-7321
 
 ## Teaching Experience
 
+-   **Visiting Lecturer**
+
+    Purdue University 2023
+
+    Data Science
+
 -   **Lecturer**\
     California Polytechnic State University, 2018-Present\
-    Courses: Statistical Inference for Management
-
-I & II
+    Courses: Statistical Inference for Management I & II
 
 -   **Lecturer**\
     University California Santa Cruz, 2017-2018\
@@ -53,8 +57,6 @@ I & II
 
 -   Sisso, D., Bass, N., & Williams, I. J. (2023). Teaching One‐Way ANOVA with engaging NBA data and R Shiny within a flexdashboard. *Teaching Statistics*.
 
--   DeLiema D., Flood V. J., D
-
-ahn M., Williams I. J., Abrahamson D., Enyedy N., & Steen F. (2022). Debugging Failure: A Multi-dimensional Framework for Documenting Newcomers’ Experiences with Obstacles. *Cognition and Instruction*.
+-   DeLiema D., Flood V. J., Dahn M., Williams I. J., Abrahamson D., Enyedy N., & Steen F. (2022). Debugging Failure: A Multi-dimensional Framework for Documenting Newcomers’ Experiences with Obstacles. *Cognition and Instruction*.
 
 -   Langer-Osuna J. M., Munson J., Gargroetzi E. C., Williams I. J., Chavez R. (2020). So What Are We

@@ -11,13 +11,18 @@ website:
       - extract_transform.qmd
       - about.qmd
   
-      
-
 format:
   html:
     theme: cosmo
     css: styles.css
+    include-in-header:
+      - text: |
+          <style>
+          .custom-green-header h1 {
+            color: green;
+            font-size: 2em;
+          }
+          </style>
     toc: true
 
 editor: visual
-

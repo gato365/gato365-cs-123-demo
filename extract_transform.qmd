@@ -9,7 +9,7 @@ Before you begin, ensure that you have the `spotifyr` package installed and load
 
 ## **Task 1: Get Tracks from The Beatles, The Rolling Stones, and The Monkees**
 
-### 1. **Load the `spotifyr` Library and Authenticate:**  {#extract}
+### 1. **Load the `spotifyr` Library and Authenticate:** {#extract}
 
 ```{r}
 #| message: false
@@ -31,7 +31,7 @@ access_token <- get_spotify_access_token()
 
 ```
 
-### 2. **Get Data for Each Artist and Bind Rows:**  {#bind}
+### 2. **Get Data for Each Artist and Bind Rows:** {#bind}
 
 ```{r}
 #| eval: false
