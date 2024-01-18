@@ -1,8 +1,8 @@
 ---
-title: "CS 123 Teaching Demonstration"
+title: "Initial Principles of Data Visualizations"
 ---
 
-## Let'a analyze these artists
+## Let's analyze these group's albums
 
 <img src="images/music_groups.jpg" alt="alt text" width="375" height="425"/>
 
@@ -11,9 +11,12 @@ title: "CS 123 Teaching Demonstration"
 
 ```
 
-::: {.callout-note collapse="true"}
 
 ## Review of the Extract & Transform 
+
+::: {.callout-note collapse="true"}
+
+## Get & Clean
 
 [ETV](https://www.causeweb.org/usproc/eusr/2022/virtual-posters/9) 
 
@@ -28,13 +31,15 @@ We extracted data using the Spotify API and transformed it using various dplyr f
 
 #### **Transformation of Data:**
 
--   `Bind Rows`: Combining `all_tracks_df`. [See this section of the notes for more details]().
+-   `Bind Rows`: Combining `all_tracks_df`. [See this section of the notes for more details](extract_transform.html).
 
--   `Filter Function`: Filtering data in `all_tracks_cleaned_df`. [Refer to this section of the notes for additional information]().
+-   `Filter Function`: Filtering data in `all_tracks_cleaned_df`. [Refer to this section of the notes for additional information](extract_transform.html).
 
--   `Group By and Summarize`: Demonstrating these processes with `album_info_df` and `artist_overview_df`. [Further details can be found in this section of the notes]().
+-   `Group By and Summarize`: Demonstrating these processes with `album_info_df` and `artist_overview_df`. [Further details can be found in this section of the notes](extract_transform.html).
 
-We are going to load the data from our previous work with following code:
+<br>
+
+## Let's load the data
 
 ```{r}
 # Load the data from the R data file
@@ -46,10 +51,44 @@ load("music_data.rda")
 
 album_info_df <- dplyr::mutate(album_info_df, album_age = 2024 - album_release_year)
 ```
+
+```{r}
+str(album_info_df)
+```
+
+
+
 :::
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Introduction to the package `ggplot2`
 ::: {.callout-note collapse="true"}
-# Introduction to the package `ggplot2`
+
+## `ggplot2`
 
 In this module, we will explore how to create visualizations using the `ggplot2` package in R.
 
@@ -59,17 +98,34 @@ We'll focus on understanding:
 
 -   Summary Statistics: The stat_summary function can calculate summary statistics (like mean, median, min, max, etc.) for each group of data
 
--   The importance of labels in making plots informative.
+-   Guides: the importance of labels and titles in making plots informative.
 :::
 
-::: {.callout-note collapse="true"}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## 0. Lets visualize using ggplot
+::: {.callout-note collapse="true"}
+## The power of `ggplot2`
 
 -   The ggplot2 package in R is a powerful and **flexible system for creating data visualizations**.
 
--   Built upon the principles of the Grammar of Graphics, it allows users to construct plots by **layering components systematically**.
+-   Built upon the principles of the **Grammar of Graphics**, it allows users to construct plots by layering components systematically.
 
--   ggplot2 is renowned for its ability to handle complex visualization tasks with ease, offering a **wide range of plot types and customization options**.
+-   ggplot2 is renowned for its ability to handle complex visualization tasks, offering a **wide range of plot types and customization options**.
 
 ```{r}
 #| message: false
@@ -80,14 +136,40 @@ library(ggplot2)
 
 ```{r}
 #| fig-align: center
-ggplot(data = all_tracks_cleaned_df)
+ggplot(data = album_info_df)
 ```
 
-**Now that we have the data, we must specify the variable(s) that we are interested to create a visualization.**
+**Now that we have the data**, ... 
+
+We must specify the variable(s) that we are interested to create a visualization.
+
+
+
 :::
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## 1. **geoms**
 ::: {.callout-note collapse="true"}
-# 1. **geoms**
+
+## Importance of Variables
+
 
 ## **But wait ... we have to understand**
 
@@ -107,39 +189,78 @@ Based on this information we can then determine how we can represent that inform
 
 **Definition**: geoms (geometric objects) are the visual representations of data in ggplot2. Examples include points, lines, and bars.
 
-geoms, or geometric objects, are the fundamental visual representations of data in ggplot2.
-
 Depending on the type of data and the story we want to tell, we choose different geoms.
+
+
+
 
 ::: {.callout-note collapse="true"}
 ### Investigating Count Data - geom_bar
 
-#### *Which group had the most albums?*
 
-**Type of Data**: One or more variables that are strings (e.g., "Artist")
 
-We'll create a bar plot using `geom_bar()` with the `artist_overview_df` data frame to visualize the count of albums by each artist group.
+1.  What your question?
+
+<span style="color:green;"><b>Which group had the most albums?</b></span>
+
+
+2.  How many variables are in your question?
+
+<span style="color:green;"><b>2</b></span>
+
+3.  What are the variable types? Strings or numeric.
+
+
+<span style="color:green;"><b>**Type of Data**: One or more variables that are strings (e.g., "Artist")</b></span>
+
+<span style="color:red;"><b>Fill out the code as I explain each element of the code</b></span>
 
 ::: {.custom-class collapse="true"}
+
 ```{r}
 
-# Bar plot to show the number of albums per artist
-ggplot(artist_overview_df, aes(x = artist_name, y = Number_of_Albums)) +
-  geom_bar(stat = 'identity') 
+# # Bar plot to show the number of albums per artist
+# ggplot(data = album_info_df, 
+# mapping = aes(
+# x = artist_name, 
+#   y = Number_of_Albums)) +
+#   geom_bar(stat = 'count') 
 ```
 
-This visualization will help us see which artist group released the most albums.
+
+#### Sooo... *Which group had the most albums?* 
+
+
 :::
+
+
+
+
+
 :::
 
 ::: {.callout-note collapse="true"}
 ### Investigating Numeric Data - geom_boxplot
 
-#### *What were the energy levels of each group?*
 
-**Type of Data**: One string variable (Artist) and one numeric variable (Energy)
 
-Using `geom_boxplot()` with the `all_tracks_cleaned_df`, we'll create a boxplot to visualize the distribution of energy levels across different artist groups.
+1.  What your question?
+
+
+<span style="color:green;"><b>What were the energy levels of each group's albums?</b></span>
+
+
+2.  How many variables are in your question?
+<span style="color:green;"><b>2</b></span>
+
+3.  What are the variable types? Strings or numeric.
+
+<span style="color:green;"><b>Type of Data: One string variable (Artist) and one numeric variable (Energy)</b></span>
+
+
+
+
+<span style="color:red;"><b>Fill out the code as I explain each element of the code</b></span>
 
 ::: {.custom-class collapse="true"}
 ## Code and Visualization
@@ -149,7 +270,25 @@ Using `geom_boxplot()` with the `all_tracks_cleaned_df`, we'll create a boxplot 
 ggplot(all_tracks_cleaned_df, aes(x = artist_name, y = energy, fill = artist_name)) +
   geom_boxplot() 
 ```
+
+
+#### Sooo... *What were the energy levels of each group's albums?* 
+
+
 :::
+
+- talk about limitation to boxplot, you can add relatve sample size 
+
+- ask students to look up violin plot
+
+- their ability to look up help page
+
+- what did you learn from these visualizations
+
+- specify what energy is measured and it was aggregated by album
+
+
+
 
 This visualization will help us see the median, IQR, and skewness of numeric data.
 
@@ -192,6 +331,11 @@ ggplot(all_tracks_cleaned_df, aes(x = artist_name, y = energy, fill = artist_nam
   geom_violin() +
   stat_summary(fun = mean, geom = "point", shape = 20, size = 6, color = "black")
 ```
+
+
+- adding appropriate labels and titles can answer the research question which will tell
+
+
 :::
 
 ::: {.callout-note collapse="true"}
@@ -269,6 +413,12 @@ ggplot(data = album_info_df, aes(x = album_age, y = Number_of_Songs, color = art
 ### Question 6: The Importance of Labels
 
 What are some potential consequences of not including proper labels on our plots? Select all that apply. \[Multiple Answers\]
+
+- do not include the scatter plot
+- code live or have students di it
+- intention with colors discussion 
+- color coding and faceting based on artist
+
 :::
 :::
 
