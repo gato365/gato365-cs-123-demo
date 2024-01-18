@@ -4,28 +4,28 @@ title: "Initial Principles of Data Visualizations"
 
 ## Let's analyze these group's albums
 
-<img src="images/music_groups.jpg" alt="alt text" width="375" height="425" style="display: block; margin-left: auto; margin-right: auto;"/>
-
-
-
+<img src="images/music_groups.jpg" alt="alt text" width="375" height="425"/>
 
 ```{r setup }
 #| include: false
 
 ```
 
-## Review of the Extract & Transform
+
+## Review of the Extract & Transform 
 
 ::: {.callout-note collapse="true"}
+
 ## Get & Clean
 
-[ETV](https://www.causeweb.org/usproc/eusr/2022/virtual-posters/9)
+[ETV](https://www.causeweb.org/usproc/eusr/2022/virtual-posters/9) 
 
 ### **How did we get this data?**
 
+
 #### **Extraction of Data:**
 
-We extracted data using the Spotify API and transformed it using various dplyr functions. [Review Extraction and Transformation Process](extract_transform.html).
+We extracted data using the Spotify API and transformed it using various dplyr functions. [Review Extraction and Transformation Process](extract_transform.html). 
 
 ### **How did we clean this data?**
 
@@ -46,14 +46,44 @@ We extracted data using the Spotify API and transformed it using various dplyr f
 load("music_data.rda")
 ```
 
+
+
 ```{r}
 str(album_info_df)
 ```
+
+
+
 :::
 
-## Introduction to the package `ggplot2`
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Introduction to the package `ggplot2`
 ::: {.callout-note collapse="true"}
+
 ## `ggplot2`
 
 In this module, we will explore how to create visualizations using the `ggplot2` package in R.
@@ -67,8 +97,23 @@ We'll focus on understanding:
 -   Guides: the importance of labels and titles in making plots informative.
 :::
 
-## Lets visualize using `ggplot`
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## 0. Lets visualize using ggplot
 ::: {.callout-note collapse="true"}
 ## The power of `ggplot2`
 
@@ -90,15 +135,37 @@ library(ggplot2)
 ggplot(data = album_info_df)
 ```
 
-**Now that we have the data**, ...
+**Now that we have the data**, ... 
 
 We must specify the variable(s) that we are interested to create a visualization.
+
+
+
 :::
 
-## **Principle 1: geoms**
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## 1. **geoms**
 ::: {.callout-note collapse="true"}
+
 ## Importance of Variables
+
 
 ## **But wait ... we have to understand**
 
@@ -120,24 +187,32 @@ Based on this information we can then determine how we can represent that inform
 
 Depending on the type of data and the story we want to tell, we choose different geoms.
 
+
+
+
 ::: {.callout-note collapse="true"}
 ### Investigating Count Data - geom_bar
 
+
+
 1.  What your question?
 
-[<b>Which group had the most albums?</b>]{style="color:green;"}
+<span style="color:green;"><b>Which group had the most albums?</b></span>
+
 
 2.  How many variables are in your question?
 
-[<b>2</b>]{style="color:green;"}
+<span style="color:green;"><b>2</b></span>
 
 3.  What are the variable types? Strings or numeric.
 
-[<b>Type of Data: One string variable (Artist) and one string variable (Album Name)</b>]{style="color:green;"}
 
-[<b>Fill out the code as I explain each element of the code</b>]{style="color:red;"}
+<span style="color:green;"><b>**Type of Data**: One or more variables that are strings (e.g., "Artist")</b></span>
+
+<span style="color:red;"><b>Fill out the code as I explain each element of the code</b></span>
 
 ::: {.custom-class collapse="true"}
+
 ```{r}
 
 # Bar plot to show the number of albums per artist
@@ -151,26 +226,39 @@ ggplot(data = album_counts_df,
 
 ```
 
-#### Sooo... *Which group had the most albums?*
+
+#### Sooo... *Which group had the most albums?* 
 :::
+
+
+
+
+
 :::
 
 ::: {.callout-note collapse="true"}
 ### Investigating Numeric Data - geom_boxplot
 
+
+
 1.  What your question?
 
-[<b>Which group’s albums had the highest energy levels?</b>]{style="color:green;"}
+
+<span style="color:green;"><b>What were the energy levels of each group's albums?</b></span>
+
 
 2.  How many variables are in your question?
 
-[<b>2</b>]{style="color:green;"}
+<span style="color:green;"><b>2</b></span>
 
 3.  What are the variable types? Strings or numeric.
 
-[<b>Type of Data: One string variable (Artist) and one numeric variable (Energy)</b>]{style="color:green;"}
+<span style="color:green;"><b>Type of Data: One string variable (Artist) and one numeric variable (Energy)</b></span>
 
-[<b>Fill out the code as I explain each element of the code</b>]{style="color:red;"}
+
+
+
+<span style="color:red;"><b>Fill out the code as I explain each element of the code</b></span>
 
 ::: {.custom-class collapse="true"}
 ## Code and Visualization
@@ -187,8 +275,28 @@ ggplot(data = album_info_df,
   geom_boxplot() 
 ```
 
-#### Sooo... *Which group’s albums had the highest energy levels?*
+
+#### Sooo... *What were the energy levels of each group's albums?* 
+
+
 :::
+
+This visualization will help us see the median, IQR, and skewness of numeric data.
+
+- talk about limitation to boxplot, you can add relatve sample size 
+
+- ask students to look up violin plot
+
+- their ability to look up help page
+
+- what did you learn from these visualizations
+
+- specify what energy is measured and it was aggregated by album
+
+
+
+
+
 
 You can investigate more geoms [here](https://ggplot2.tidyverse.org/reference/).
 :::
@@ -196,12 +304,13 @@ You can investigate more geoms [here](https://ggplot2.tidyverse.org/reference/).
 ::: {.callout-note collapse="true"}
 # Questions
 
+
+
 ## Question 1:
 
-Replace the box plot with the violin plot using the `geom_violin()` function.
+Convert a boxplot to a violin plot using the `geom_violin()` function. \[Code\]
 
 ```{r}
-
 ggplot(data = album_info_df, 
        mapping = aes(
          x = artist_name, 
@@ -212,20 +321,33 @@ ggplot(data = album_info_df,
   geom_violin()
 ```
 
-a.  What do you notice about the violin plot?
 
-b.  How does it differ from the box plot?
 
-[<b>Answer: The violin and box plot both show the distribution of energy levels per artist. However, the violin plot shows where the data is concentrated better.</b>]{style="color:green;"}
+Follow up Question: What do you notice about the violin plot compared to the boxplot? 
+
+
 :::
 :::
 
-## **Principle 2: Stats within ggplot**
 
+
+
+
+
+
+
+
+
+
+## 2. Stats within ggplot
 ::: {.callout-note collapse="true"}
+
+
 -   **Definition**: In ggplot2, stats are key elements that help summarize and represent data. They allow us to visualize the central tendency or the most typical value in the data.
 
+
 ::: {.custom-class collapse="true"}
+
 # Code and Visualization
 
 ```{r}
@@ -243,6 +365,11 @@ ggplot(data = album_info_df,
     fun = mean
     )
 ```
+
+
+- adding appropriate labels and titles can answer the research question which will tell
+
+
 :::
 
 ::: {.callout-note collapse="true"}
@@ -250,7 +377,10 @@ ggplot(data = album_info_df,
 
 ## Question 2: Adding Summary Statistics to Geoms
 
-a.  Complete the code to overlay text on the bars using geom_text(). Use the `help()` function to learn more about the geom_text() function.
+a.  Complete the code to overlay text on the bars using geom_text(). Use the `help()` function to learn more about the geom_text() function. 
+
+
+
 
 ```{r}
 ggplot(data = album_counts_df, 
@@ -265,22 +395,24 @@ ggplot(data = album_counts_df,
               size = 3.5)    # Set text size
 ```
 
+
+
 b.  How many albums do The Monkees have? \[Numeric\]
-:::
+
+
 :::
 
-## **Principle 3: Guides - Legends and Annotations**
+:::
 
 ::: {.callout-note collapse="true"}
--   **Definition**: In ggplot2, guides are critical elements that enhance the interpretability of a plot. They include:
+# 3. Guide: Legends and Annotations
 
--   legends
+-   **Definition**: In ggplot2, guides are critical elements that enhance the interpretability of a plot. They include: 
 
--   axes labels
-
--   titles
-
--   other annotations
+- legends
+- axes labels
+- titles 
+- other annotations
 
 These serve as navigational tools that provide context and improve readability.
 
@@ -336,13 +468,19 @@ ggplot(data = album_info_df ,
 
 ```
 
-Go back and add labels (title, subtitle, x-axis label, y-axis label) to all the plots you created in this module. How does this change the way you interpret the plots?
-:::
-:::
 
-## Conclusion
+
+Go back and add labels (title, subtitle, x-axis label, y-axis label) to all the plots you created in this module. How does this change the way you interpret the plots? 
+
+
+
+
+:::
+:::
 
 ::: {.callout-note collapse="true"}
+# Conclusion
+
 Today's exploration of the ggplot2 package in R has taken us through the intricacies of Geoms, Stats, and Guides. We've utilized `all_tracks_cleaned_df`, `album_info_df`, and `artist_overview_df` to demonstrate the creation of compelling visualizations, from basic bar charts to insightful violin and scatter plots.
 
 -   **geoms** showed the diverse ways data can be visually represented.

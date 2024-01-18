@@ -1,6 +1,8 @@
 project:
   type: website
   output-dir: docs
+  render: ["index.qmd", "learning_objectives.qmd",
+  "extract_transform.qmd","about.qmd"]
 
 website:
   title: "CS 123 Teaching Demo"

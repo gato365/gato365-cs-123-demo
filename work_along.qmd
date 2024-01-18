@@ -1,0 +1,165 @@
+---
+title: "Initial Principles of Data Visualizations"
+---
+
+```{r setup, include=FALSE}
+library(ggplot2)
+library(dplyr)
+```
+
+## Let's load the data
+
+```{r load-data}
+# Load the data from the R data file
+load("music_data.rda")
+```
+
+## Introduction to ggplot2
+
+### Creating a Bar Plot
+
+Create a bar plot to show the number of albums per artist. Use `geom_bar()` and fill out the `aes()` function. **Replace the [*] with the appropriate geom.**
+
+```{r bar-plot-exercise, exercise = TRUE}
+# Your code here
+ggplot(data = album_counts_df, 
+       mapping = aes(
+           x = reorder(artist_name, -album_count), 
+           y = album_count
+           )
+       ) +
+    [*](stat = "_______") ## Ask me why is it called stat = "identity".
+```
+
+
+### Creating a Box Plot
+
+Now, create a box plot to visualize the energy levels of each group's albums. Use `geom_boxplot()`. **Replace the [*] with the appropriate geom.**
+
+
+
+```{r}
+ggplot(data = album_info_df, 
+       mapping = aes(
+         x = artist_name, 
+         y = energy, 
+         fill = artist_name
+         )
+       ) +
+  [*]() 
+```
+
+
+
+
+
+### Creating a Violin Plot
+
+Now, create a violin plot to visualize the energy levels of each group's albums. Use `geom_violin()`.  
+
+```{r violin-plot-exercise, exercise = TRUE}
+# Your code here
+ggplot(data = album_info_df, 
+       mapping = aes(
+         x = artist_name, 
+         y = energy, 
+         fill = artist_name
+         )
+       ) +
+  geom_boxplot() ## Replace this with the appropriate geom.
+```
+
+
+### Adding a stat to a plot
+
+We want to add the mean of energy to each group's violin plot. Use `stat_summary()` to add the mean to each group's violin plot. **Replace the [*] with the appropriate stat.**
+
+```{r}
+ggplot(data = album_info_df, 
+       mapping = aes(
+         x = artist_name, 
+         y = energy, 
+         fill = artist_name
+         )
+       ) +
+  geom_violin() +
+  stat_summary(
+    fun = [*]
+    )
+```
+
+
+
+### Question 2: Using geom_text
+
+We want to find the count of albums per artist and add it to the bar plot. Use `geom_text()` to add the count of albums to the bar plot. **Replace the [1*] with the appropriate geom. Also, Replace the [2*] with the appropriate label.** 
+  
+```{r}
+ggplot(data = album_counts_df, 
+       mapping = aes(
+           x = reorder(artist_name, -album_count), 
+           y = album_count
+       )) +
+    geom_bar(stat = "identity") +
+    [1*](mapping = aes(
+      label = [2*]), 
+              vjust = -0.5,  # Adjust text just above the bars
+              size = 3.5)    # Set text size
+```
+  
+
+## Adding labels to plots
+
+We want to add labels to our plots to make them more interpretable. We will add a title, x-axis label, and y-axis label to our plots. **Replace the [*] with the appropriate function.**
+
+
+```{r}
+# Example code for adding labels to a plot
+ggplot(data = album_info_df, 
+       mapping = aes(
+         x = artist_name, 
+         y = energy, 
+         fill = artist_name
+       )
+) +
+  geom_violin() +
+  stat_summary(fun = mean) +
+  [*](
+    title = "Energy Levels by Artist",
+    subtitle = "Comparison using violin plots with mean energy levels",
+    x = "Artist Name",
+    y = "Energy Level",
+    fill = "Artist Group"
+  )
+
+```
+
+
+
+
+### Question 3: Using labs()
+
+Create a scatter plot using `geom_point` to explore the relationship between `energy` and `valence` of albums. Edit the code to include a title, axis labels, and a color legend that are appropriate for the data being visualized. Specifically, set the title to 'Energy vs Valence: Exploring Album Characteristics', the subtitle to 'A scatter plot illustrating the relationship between energy and valence in albums', the x-axis label to 'Energy', and the y-axis label to 'Valence'.
+
+```{r}
+# Your code to add labels to a scatter plot goes here
+ggplot(data = album_info_df , 
+       mapping = aes(
+         x = energy, 
+         y = valence
+         )
+       ) +
+  geom_point() +
+  labs(
+    title = "TITLE",
+    subtitle = "SUBTITLE",
+    x = "X_Variable",
+    y = "Y_Variable"
+  )
+
+```
+
+
+## Conclusion
+
+Great job! You've practiced creating different types of ggplot2 visualizations and adding labels to enhance interpretability.

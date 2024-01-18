@@ -162,7 +162,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#task-2-aggregate-information-based-on-album-and-artist" id="toc-task-2-aggregate-information-based-on-album-and-artist" class="nav-link" data-scroll-target="#task-2-aggregate-information-based-on-album-and-artist"><strong>Task 2: Aggregate Information Based on Album and Artist</strong></a>
   <ul class="collapse">
   <li><a href="#groupby" id="toc-groupby" class="nav-link" data-scroll-target="#groupby">1. <strong>Group by Album and Artist:</strong></a></li>
-  <li><a href="#create-an-overall-dataframe-for-each-artist" id="toc-create-an-overall-dataframe-for-each-artist" class="nav-link" data-scroll-target="#create-an-overall-dataframe-for-each-artist">2. <strong>Create an Overall DataFrame for Each Artist:</strong></a></li>
+  <li><a href="#create-an-overall-data-frame-for-each-artist" id="toc-create-an-overall-data-frame-for-each-artist" class="nav-link" data-scroll-target="#create-an-overall-data-frame-for-each-artist">2. <strong>Create an Overall Data Frame for Each Artist:</strong></a></li>
+  <li><a href="#determine-the-number-of-albums" id="toc-determine-the-number-of-albums" class="nav-link" data-scroll-target="#determine-the-number-of-albums">3. Determine the number of albums</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -202,45 +203,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(spotifyr)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'tidyverse' was built under R version 4.3.2</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'ggplot2' was built under R version 4.3.1</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'purrr' was built under R version 4.3.1</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'lubridate' was built under R version 4.3.1</code></pre>
-</div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load environment variables</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>client_id <span class="ot">&lt;-</span> <span class="fu">Sys.getenv</span>(<span class="st">"SPOTIFY_CLIENT_ID"</span>)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>client_secret <span class="ot">&lt;-</span> <span class="fu">Sys.getenv</span>(<span class="st">"SPOTIFY_CLIENT_SECRET"</span>)</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Authenticate using the loaded credentials</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Authenticate using the credentials stored in environment variables</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>access_token <span class="ot">&lt;-</span> <span class="fu">get_spotify_access_token</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load environment variables</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>client_id <span class="ot">&lt;-</span> <span class="fu">Sys.getenv</span>(<span class="st">"SPOTIFY_CLIENT_ID"</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>client_secret <span class="ot">&lt;-</span> <span class="fu">Sys.getenv</span>(<span class="st">"SPOTIFY_CLIENT_SECRET"</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Authenticate using the loaded credentials</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Authenticate using the credentials stored in environment variables</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>access_token <span class="ot">&lt;-</span> <span class="fu">get_spotify_access_token</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="bind" class="level3">
 <h3 class="anchored" data-anchor-id="bind">2. <strong>Get Data for Each Artist and Bind Rows:</strong></h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>beatles_tracks <span class="ot">&lt;-</span> <span class="fu">get_artist_audio_features</span>(<span class="st">"The Beatles"</span>)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>rolling_stones_tracks <span class="ot">&lt;-</span> <span class="fu">get_artist_audio_features</span>(<span class="st">"The Rolling Stones"</span>)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>monkees_tracks <span class="ot">&lt;-</span> <span class="fu">get_artist_audio_features</span>(<span class="st">"The Monkees"</span>)</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>all_tracks <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(beatles_tracks, rolling_stones_tracks, monkees_tracks)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>beatles_tracks_df <span class="ot">&lt;-</span> <span class="fu">get_artist_audio_features</span>(<span class="st">"The Beatles"</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>rolling_stones_tracks_df <span class="ot">&lt;-</span> <span class="fu">get_artist_audio_features</span>(<span class="st">"The Rolling Stones"</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>monkees_tracks_df <span class="ot">&lt;-</span> <span class="fu">get_artist_audio_features</span>(<span class="st">"The Monkees"</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>all_tracks_df <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(beatles_tracks_df, rolling_stones_tracks_df, monkees_tracks_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="filter" class="level3">
 <h3 class="anchored" data-anchor-id="filter">3. <strong>Filter Out Duplicates and Irrelevant Data:</strong></h3>
 <p>Here, you’ll need to decide what constitutes an irrelevant track. For simplicity, I’m removing duplicates based on track IDs.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>all_tracks_cleaned <span class="ot">&lt;-</span> all_tracks <span class="sc">%&gt;%</span> </span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">distinct</span>(track_id, <span class="at">.keep_all =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>all_tracks_cleaned_df <span class="ot">&lt;-</span> all_tracks_df <span class="sc">%&gt;%</span> </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">simple_track_name =</span> <span class="fu">str_extract</span>(track_name, <span class="st">"^[^-]*"</span>),</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">album_age =</span> <span class="dv">2024</span> <span class="sc">-</span> album_release_year) <span class="sc">%&gt;%</span> </span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(simple_track_name, album_age) <span class="sc">%&gt;%</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(simple_track_name, <span class="at">.keep_all =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
@@ -250,27 +242,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="groupby">1. <strong>Group by Album and Artist:</strong></h3>
 <p>Aggregate data to get Energy, Valence, Number of Songs per Album, and Album Year.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>album_info <span class="ot">&lt;-</span> all_tracks_cleaned <span class="sc">%&gt;%</span> </span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">group_by</span>(artist_name, album_name, album_release_year) <span class="sc">%&gt;%</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summarise</span>(<span class="at">Energy =</span> <span class="fu">mean</span>(energy),</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="at">Valence =</span> <span class="fu">mean</span>(valence),</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="at">Number_of_Songs =</span> <span class="fu">n</span>(),</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="at">.groups =</span> <span class="st">'drop'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>album_info_df <span class="ot">&lt;-</span> all_tracks_cleaned_df <span class="sc">%&gt;%</span> </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">group_by</span>(artist_name, album_name, album_release_year) <span class="sc">%&gt;%</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summarise</span>(<span class="at">energy =</span> <span class="fu">mean</span>(energy),</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="at">valence =</span> <span class="fu">mean</span>(valence),</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="at">Number_of_Songs =</span> <span class="fu">n</span>(),</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="at">.groups =</span> <span class="st">'drop'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="create-an-overall-dataframe-for-each-artist" class="level3">
-<h3 class="anchored" data-anchor-id="create-an-overall-dataframe-for-each-artist">2. <strong>Create an Overall DataFrame for Each Artist:</strong></h3>
-<p>This DataFrame will show the number of songs, number of albums, and other noteworthy variables for each artist.</p>
+<section id="create-an-overall-data-frame-for-each-artist" class="level3">
+<h3 class="anchored" data-anchor-id="create-an-overall-data-frame-for-each-artist">2. <strong>Create an Overall Data Frame for Each Artist:</strong></h3>
+<p>This Data Frame will show the number of songs, number of albums, and other noteworthy variables for each artist.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>artist_overview <span class="ot">&lt;-</span> all_tracks_cleaned <span class="sc">%&gt;%</span> </span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">group_by</span>(artist_name) <span class="sc">%&gt;%</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summarise</span>(<span class="at">Number_of_Songs =</span> <span class="fu">n</span>(),</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="at">Number_of_Albums =</span> <span class="fu">n_distinct</span>(album_name),</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="at">Average_Energy =</span> <span class="fu">mean</span>(energy),</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="at">Average_Valence =</span> <span class="fu">mean</span>(valence),</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="at">.groups =</span> <span class="st">'drop'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>artist_overview <span class="ot">&lt;-</span> all_tracks_cleaned <span class="sc">%&gt;%</span> </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">group_by</span>(artist_name) <span class="sc">%&gt;%</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summarise</span>(<span class="at">Number_of_Songs =</span> <span class="fu">n</span>(),</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="at">Number_of_Albums =</span> <span class="fu">n_distinct</span>(album_name),</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="at">Average_Energy =</span> <span class="fu">mean</span>(energy),</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="at">Average_Valence =</span> <span class="fu">mean</span>(valence),</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="at">.groups =</span> <span class="st">'drop'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="determine-the-number-of-albums" class="level3">
+<h3 class="anchored" data-anchor-id="determine-the-number-of-albums">3. Determine the number of albums</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>album_counts_df <span class="ot">&lt;-</span> all_tracks_cleaned_df <span class="sc">%&gt;%</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(artist_name) <span class="sc">%&gt;%</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">album_count =</span> <span class="fu">n_distinct</span>(album_name)) <span class="sc">%&gt;%</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(album_count))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Please note that this code is a general guide. The exact specifications, like what constitutes a duplicate or irrelevant track, may need to be adjusted based on your specific requirements and the structure of the data returned by the Spotify API. Additionally, be aware of any rate limits or restrictions imposed by the Spotify API.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(album_counts_df, album_info_df, <span class="at">file =</span> <span class="st">"music_data.rda"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 
 
 </section>

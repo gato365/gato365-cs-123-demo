@@ -13,6 +13,7 @@ Before you begin, ensure that you have the `spotifyr` package installed and load
 
 ```{r}
 #| message: false
+#| warning: false
 
 library(spotifyr)
 library(tidyverse)
@@ -36,11 +37,11 @@ access_token <- get_spotify_access_token()
 ```{r}
 #| eval: false
 
-beatles_tracks <- get_artist_audio_features("The Beatles")
-rolling_stones_tracks <- get_artist_audio_features("The Rolling Stones")
-monkees_tracks <- get_artist_audio_features("The Monkees")
+beatles_tracks_df <- get_artist_audio_features("The Beatles")
+rolling_stones_tracks_df <- get_artist_audio_features("The Rolling Stones")
+monkees_tracks_df <- get_artist_audio_features("The Monkees")
 
-all_tracks <- bind_rows(beatles_tracks, rolling_stones_tracks, monkees_tracks)
+all_tracks_df <- bind_rows(beatles_tracks_df, rolling_stones_tracks_df, monkees_tracks_df)
 ```
 
 ### 3. **Filter Out Duplicates and Irrelevant Data:** {#filter}
@@ -50,8 +51,15 @@ Here, you'll need to decide what constitutes an irrelevant track. For simplicity
 ```{r}
 #| eval: false
 
-all_tracks_cleaned <- all_tracks %>% 
-distinct(track_id, .keep_all = TRUE)
+
+
+all_tracks_cleaned_df <- all_tracks_df %>% 
+  mutate(simple_track_name = str_extract(track_name, "^[^-]*"),
+         album_age = 2024 - album_release_year) %>% 
+  arrange(simple_track_name, album_age) %>%
+  distinct(simple_track_name, .keep_all = TRUE)
+
+  
 ```
 
 ## **Task 2: Aggregate Information Based on Album and Artist**
@@ -63,17 +71,17 @@ Aggregate data to get Energy, Valence, Number of Songs per Album, and Album Year
 ```{r}
 #| eval: false
 
-album_info <- all_tracks_cleaned %>% 
+album_info_df <- all_tracks_cleaned_df %>% 
 group_by(artist_name, album_name, album_release_year) %>%
-summarise(Energy = mean(energy),
-Valence = mean(valence),
+summarise(energy = mean(energy),
+valence = mean(valence),
 Number_of_Songs = n(),
 .groups = 'drop')
 ```
 
-### 2. **Create an Overall DataFrame for Each Artist:**
+### 2. **Create an Overall Data Frame for Each Artist:**
 
-This DataFrame will show the number of songs, number of albums, and other noteworthy variables for each artist.
+This Data Frame will show the number of songs, number of albums, and other noteworthy variables for each artist.
 
 ```{r}
 #| eval: false
@@ -87,4 +95,21 @@ Average_Valence = mean(valence),
 .groups = 'drop')
 ```
 
+### 3. Determine the number of albums
+
+```{r}
+#| eval: false
+
+album_counts_df <- all_tracks_cleaned_df %>%
+  group_by(artist_name) %>%
+  summarise(album_count = n_distinct(album_name)) %>%
+  arrange(desc(album_count))
+```
+
 Please note that this code is a general guide. The exact specifications, like what constitutes a duplicate or irrelevant track, may need to be adjusted based on your specific requirements and the structure of the data returned by the Spotify API. Additionally, be aware of any rate limits or restrictions imposed by the Spotify API.
+
+```{r}
+#| eval: false
+
+save(album_counts_df, album_info_df, file = "music_data.rda")
+```

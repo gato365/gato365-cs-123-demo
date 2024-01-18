@@ -53,10 +53,12 @@ Phone: (732) 207-7321
 
 ## Publications
 
--   Weiland, T., & Williams, I. J. (2023). Culturally Relevant Data in Teaching Statistics and Data Science Courses. *Journal of Statistics and Data Science Education*, 1-16.
+- Weiland, T., & **Williams, I. J.**, (2023). Culturally Relevant Data in Teaching Statistics and Data  Science Courses. *Journal of Statistics and Data Science Education*, 1-16.
 
--   Sisso, D., Bass, N., & Williams, I. J. (2023). Teaching One‐Way ANOVA with engaging NBA data and R Shiny within a flexdashboard. *Teaching Statistics*.
+- Sisso, D., Bass, N., & **Williams, I. J.**, (2023). Teaching One‐Way ANOVA with engaging NBA data  and R Shiny within a flexdashboard. *Teaching Statistics*.
 
--   DeLiema D., Flood V. J., Dahn M., Williams I. J., Abrahamson D., Enyedy N., & Steen F. (2022). Debugging Failure: A Multi-dimensional Framework for Documenting Newcomers’ Experiences with Obstacles. *Cognition and Instruction*.
+- DeLiema D., Flood V. J., Dahn M., **Williams, I. J.**, Abrahamson D., Enyedy N., & Steen F.  (2022). Debugging Failure: A Multi-dimensional Framework for Documenting Newcomers’ Experiences with Obstacles. *Cognition and Instruction*
 
--   Langer-Osuna J. M., Munson J., Gargroetzi E. C., Williams I. J., Chavez R. (2020). So What Are We
+- Langer-Osuna J. M., Munson J., Gargroetzi E. C., **Williams, I. J.**, Chavez R. (2020) So  What Are We Working On?  Examining Student Authority Relations During Collaborative Mathematics Activity in a Fourth Grade Classroom. *Educational Studies in Mathematics*
+
+- Battey, D., Leyva L. A., **Williams, I. J.**, Belizario, V., Greco, R., Shah, R. (2019). Racial (Mis)Match  in Middle School Mathematics Classrooms: Relational Interactions as a Racialized Mechanism. *Harvard Educational Review*, 89(1)
