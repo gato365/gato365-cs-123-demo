@@ -30,6 +30,9 @@ client_secret <- Sys.getenv("SPOTIFY_CLIENT_SECRET")
 # Authenticate using the credentials stored in environment variables
 access_token <- get_spotify_access_token()
 
+
+kendrick_lamar_df <- get_artist_audio_features("Kendrick Lamar")
+save(kendrick_lamar_df, file = "kendrick_lamar_df.rda")
 ```
 
 ### 2. **Get Data for Each Artist and Bind Rows:** {#bind}
